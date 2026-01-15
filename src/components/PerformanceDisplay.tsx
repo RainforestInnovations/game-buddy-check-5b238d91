@@ -146,12 +146,6 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">Recommended Quality:</span>
-            <span className={`text-xl font-bold ${getQualityColor(performance.quality)}`}>
-              {performance.quality}
-            </span>
-          </div>
         </div>
       </div>
 
