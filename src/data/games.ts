@@ -6,6 +6,7 @@ export interface Game {
   releaseYear: number;
   genre: string[];
   supportedOS: ('windows' | 'macos' | 'linux')[];
+  hasBenchmark?: boolean; // Whether we have specific benchmark data for this game
   minRequirements: {
     gpu: string;
     cpu: string;
@@ -18,6 +19,102 @@ export interface Game {
     ram: number;
     vram: number;
   };
+}
+
+// GPU benchmark data for when game-specific benchmarks aren't available
+export interface GPUBenchmark {
+  gpuName: string;
+  benchmarkScore: number;
+  avg1080pFps: number;
+  avg1440pFps: number;
+  avg4kFps: number;
+}
+
+export const gpuBenchmarks: GPUBenchmark[] = [
+  // NVIDIA RTX 50 Series
+  { gpuName: "RTX 5090", benchmarkScore: 100, avg1080pFps: 280, avg1440pFps: 220, avg4kFps: 145 },
+  { gpuName: "RTX 5080", benchmarkScore: 92, avg1080pFps: 255, avg1440pFps: 195, avg4kFps: 125 },
+  { gpuName: "RTX 5070 Ti", benchmarkScore: 85, avg1080pFps: 235, avg1440pFps: 175, avg4kFps: 110 },
+  { gpuName: "RTX 5070", benchmarkScore: 78, avg1080pFps: 215, avg1440pFps: 160, avg4kFps: 95 },
+  // NVIDIA RTX 40 Series
+  { gpuName: "RTX 4090", benchmarkScore: 95, avg1080pFps: 265, avg1440pFps: 205, avg4kFps: 135 },
+  { gpuName: "RTX 4080 Super", benchmarkScore: 88, avg1080pFps: 245, avg1440pFps: 185, avg4kFps: 115 },
+  { gpuName: "RTX 4080", benchmarkScore: 85, avg1080pFps: 235, avg1440pFps: 175, avg4kFps: 105 },
+  { gpuName: "RTX 4070 Ti Super", benchmarkScore: 80, avg1080pFps: 220, avg1440pFps: 165, avg4kFps: 95 },
+  { gpuName: "RTX 4070 Ti", benchmarkScore: 77, avg1080pFps: 210, avg1440pFps: 155, avg4kFps: 88 },
+  { gpuName: "RTX 4070 Super", benchmarkScore: 74, avg1080pFps: 200, avg1440pFps: 145, avg4kFps: 82 },
+  { gpuName: "RTX 4070", benchmarkScore: 70, avg1080pFps: 185, avg1440pFps: 135, avg4kFps: 75 },
+  { gpuName: "RTX 4060 Ti", benchmarkScore: 60, avg1080pFps: 155, avg1440pFps: 110, avg4kFps: 58 },
+  { gpuName: "RTX 4060", benchmarkScore: 55, avg1080pFps: 140, avg1440pFps: 98, avg4kFps: 48 },
+  // NVIDIA RTX 30 Series
+  { gpuName: "RTX 3090 Ti", benchmarkScore: 82, avg1080pFps: 225, avg1440pFps: 170, avg4kFps: 100 },
+  { gpuName: "RTX 3090", benchmarkScore: 78, avg1080pFps: 210, avg1440pFps: 158, avg4kFps: 92 },
+  { gpuName: "RTX 3080 Ti", benchmarkScore: 75, avg1080pFps: 200, avg1440pFps: 148, avg4kFps: 85 },
+  { gpuName: "RTX 3080", benchmarkScore: 72, avg1080pFps: 190, avg1440pFps: 140, avg4kFps: 78 },
+  { gpuName: "RTX 3070 Ti", benchmarkScore: 65, avg1080pFps: 170, avg1440pFps: 125, avg4kFps: 65 },
+  { gpuName: "RTX 3070", benchmarkScore: 62, avg1080pFps: 160, avg1440pFps: 118, avg4kFps: 60 },
+  { gpuName: "RTX 3060 Ti", benchmarkScore: 58, avg1080pFps: 150, avg1440pFps: 108, avg4kFps: 52 },
+  { gpuName: "RTX 3060", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 45 },
+  { gpuName: "RTX 3050", benchmarkScore: 38, avg1080pFps: 95, avg1440pFps: 65, avg4kFps: 32 },
+  // NVIDIA RTX 20 Series
+  { gpuName: "RTX 2080 Ti", benchmarkScore: 68, avg1080pFps: 175, avg1440pFps: 130, avg4kFps: 70 },
+  { gpuName: "RTX 2080 Super", benchmarkScore: 62, avg1080pFps: 160, avg1440pFps: 115, avg4kFps: 60 },
+  { gpuName: "RTX 2080", benchmarkScore: 58, avg1080pFps: 150, avg1440pFps: 108, avg4kFps: 55 },
+  { gpuName: "RTX 2070 Super", benchmarkScore: 55, avg1080pFps: 142, avg1440pFps: 100, avg4kFps: 50 },
+  { gpuName: "RTX 2070", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 45 },
+  { gpuName: "RTX 2060 Super", benchmarkScore: 48, avg1080pFps: 125, avg1440pFps: 88, avg4kFps: 40 },
+  { gpuName: "RTX 2060", benchmarkScore: 45, avg1080pFps: 118, avg1440pFps: 82, avg4kFps: 38 },
+  // NVIDIA GTX 10 Series
+  { gpuName: "GTX 1080 Ti", benchmarkScore: 55, avg1080pFps: 142, avg1440pFps: 100, avg4kFps: 50 },
+  { gpuName: "GTX 1080", benchmarkScore: 48, avg1080pFps: 125, avg1440pFps: 88, avg4kFps: 42 },
+  { gpuName: "GTX 1070 Ti", benchmarkScore: 44, avg1080pFps: 115, avg1440pFps: 80, avg4kFps: 38 },
+  { gpuName: "GTX 1070", benchmarkScore: 42, avg1080pFps: 108, avg1440pFps: 75, avg4kFps: 35 },
+  { gpuName: "GTX 1660 Ti", benchmarkScore: 40, avg1080pFps: 102, avg1440pFps: 70, avg4kFps: 32 },
+  { gpuName: "GTX 1660 Super", benchmarkScore: 38, avg1080pFps: 98, avg1440pFps: 68, avg4kFps: 30 },
+  { gpuName: "GTX 1660", benchmarkScore: 35, avg1080pFps: 90, avg1440pFps: 62, avg4kFps: 28 },
+  { gpuName: "GTX 1650 Super", benchmarkScore: 32, avg1080pFps: 82, avg1440pFps: 55, avg4kFps: 25 },
+  { gpuName: "GTX 1650", benchmarkScore: 28, avg1080pFps: 72, avg1440pFps: 48, avg4kFps: 22 },
+  { gpuName: "GTX 1060", benchmarkScore: 32, avg1080pFps: 82, avg1440pFps: 55, avg4kFps: 25 },
+  { gpuName: "GTX 1050 Ti", benchmarkScore: 24, avg1080pFps: 62, avg1440pFps: 40, avg4kFps: 18 },
+  { gpuName: "GTX 1050", benchmarkScore: 20, avg1080pFps: 52, avg1440pFps: 32, avg4kFps: 14 },
+  // AMD RX 9000 Series
+  { gpuName: "RX 9070 XT", benchmarkScore: 85, avg1080pFps: 235, avg1440pFps: 175, avg4kFps: 105 },
+  { gpuName: "RX 9070", benchmarkScore: 78, avg1080pFps: 210, avg1440pFps: 155, avg4kFps: 90 },
+  // AMD RX 7000 Series
+  { gpuName: "RX 7900 XTX", benchmarkScore: 88, avg1080pFps: 245, avg1440pFps: 185, avg4kFps: 110 },
+  { gpuName: "RX 7900 XT", benchmarkScore: 80, avg1080pFps: 220, avg1440pFps: 165, avg4kFps: 95 },
+  { gpuName: "RX 7900 GRE", benchmarkScore: 72, avg1080pFps: 190, avg1440pFps: 140, avg4kFps: 80 },
+  { gpuName: "RX 7800 XT", benchmarkScore: 65, avg1080pFps: 170, avg1440pFps: 125, avg4kFps: 68 },
+  { gpuName: "RX 7700 XT", benchmarkScore: 58, avg1080pFps: 150, avg1440pFps: 108, avg4kFps: 55 },
+  { gpuName: "RX 7600 XT", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 45 },
+  { gpuName: "RX 7600", benchmarkScore: 48, avg1080pFps: 125, avg1440pFps: 88, avg4kFps: 40 },
+  // AMD RX 6000 Series
+  { gpuName: "RX 6950 XT", benchmarkScore: 75, avg1080pFps: 200, avg1440pFps: 148, avg4kFps: 85 },
+  { gpuName: "RX 6900 XT", benchmarkScore: 72, avg1080pFps: 190, avg1440pFps: 140, avg4kFps: 78 },
+  { gpuName: "RX 6800 XT", benchmarkScore: 68, avg1080pFps: 178, avg1440pFps: 130, avg4kFps: 70 },
+  { gpuName: "RX 6800", benchmarkScore: 62, avg1080pFps: 160, avg1440pFps: 118, avg4kFps: 62 },
+  { gpuName: "RX 6750 XT", benchmarkScore: 55, avg1080pFps: 142, avg1440pFps: 102, avg4kFps: 52 },
+  { gpuName: "RX 6700 XT", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 48 },
+  { gpuName: "RX 6650 XT", benchmarkScore: 45, avg1080pFps: 118, avg1440pFps: 82, avg4kFps: 38 },
+  { gpuName: "RX 6600 XT", benchmarkScore: 42, avg1080pFps: 110, avg1440pFps: 75, avg4kFps: 35 },
+  { gpuName: "RX 6600", benchmarkScore: 38, avg1080pFps: 98, avg1440pFps: 68, avg4kFps: 32 },
+  { gpuName: "RX 6500 XT", benchmarkScore: 25, avg1080pFps: 65, avg1440pFps: 42, avg4kFps: 20 },
+  // AMD RX 5000 Series
+  { gpuName: "RX 5700 XT", benchmarkScore: 48, avg1080pFps: 125, avg1440pFps: 88, avg4kFps: 42 },
+  { gpuName: "RX 5700", benchmarkScore: 45, avg1080pFps: 118, avg1440pFps: 82, avg4kFps: 38 },
+  { gpuName: "RX 5600 XT", benchmarkScore: 40, avg1080pFps: 102, avg1440pFps: 70, avg4kFps: 32 },
+  { gpuName: "RX 580", benchmarkScore: 32, avg1080pFps: 82, avg1440pFps: 55, avg4kFps: 25 },
+  { gpuName: "RX 570", benchmarkScore: 28, avg1080pFps: 72, avg1440pFps: 48, avg4kFps: 22 },
+  // Intel Arc
+  { gpuName: "Intel Arc B580", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 45 },
+  { gpuName: "Intel Arc A770", benchmarkScore: 52, avg1080pFps: 135, avg1440pFps: 95, avg4kFps: 45 },
+  { gpuName: "Intel Arc A750", benchmarkScore: 45, avg1080pFps: 118, avg1440pFps: 82, avg4kFps: 38 },
+  { gpuName: "Intel Arc A580", benchmarkScore: 38, avg1080pFps: 98, avg1440pFps: 68, avg4kFps: 30 },
+  { gpuName: "Intel Arc A380", benchmarkScore: 20, avg1080pFps: 52, avg1440pFps: 32, avg4kFps: 14 },
+];
+
+export function getGPUBenchmark(gpuName: string): GPUBenchmark | undefined {
+  return gpuBenchmarks.find(b => b.gpuName === gpuName);
 }
 
 export const games: Game[] = [
@@ -96,7 +193,7 @@ export const games: Game[] = [
   { id: "planetcoaster2", name: "Planet Coaster 2", steamAppId: 2688950, releaseYear: 2024, genre: ["Simulation", "Theme Park"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 12, vram: 4 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "sims4", name: "The Sims 4", steamAppId: 1222670, releaseYear: 2014, genre: ["Simulation", "Life Sim"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2500", ram: 8, vram: 2 } },
   { id: "footballmanager24", name: "Football Manager 2024", steamAppId: 2252570, releaseYear: 2023, genre: ["Simulation", "Sports"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-6600K", ram: 16, vram: 4 } },
-  { id: "gta6", name: "Grand Theft Auto VI", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7lrf.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
+  { id: "gta6", name: "Grand Theft Auto VI", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7lrf.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
   { id: "rainbowsixsiege", name: "Rainbow Six Siege", steamAppId: 359550, releaseYear: 2015, genre: ["FPS", "Tactical"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 460", cpu: "Intel Core i3-560", ram: 6, vram: 1 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-2500K", ram: 8, vram: 4 } },
   { id: "escapefromtarkov", name: "Escape from Tarkov", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1ycf.png", releaseYear: 2017, genre: ["FPS", "Survival"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2500K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 } },
   { id: "pubg", name: "PUBG: Battlegrounds", steamAppId: 578080, releaseYear: 2017, genre: ["Battle Royale", "FPS"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4430", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i5-6600K", ram: 16, vram: 6 } },
@@ -129,21 +226,21 @@ export const games: Game[] = [
   { id: "horizonforbiddenwest", name: "Horizon Forbidden West", steamAppId: 2420110, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1650", cpu: "Intel Core i5-8600K", ram: 16, vram: 4 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-10700K", ram: 32, vram: 12 } },
   { id: "spidermanremastered", name: "Marvel's Spider-Man Remastered", steamAppId: 1817070, releaseYear: 2022, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 950", cpu: "Intel Core i3-4160", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i5-8400", ram: 16, vram: 8 } },
   { id: "spidermanmm", name: "Marvel's Spider-Man: Miles Morales", steamAppId: 1817190, releaseYear: 2022, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 950", cpu: "Intel Core i3-4160", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i5-11400", ram: 16, vram: 8 } },
-  { id: "spiderman2", name: "Marvel's Spider-Man 2", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6bpg.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "spiderman2", name: "Marvel's Spider-Man 2", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6bpg.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "ghostoftsushima", name: "Ghost of Tsushima: Director's Cut", steamAppId: 2215430, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-8600", ram: 16, vram: 4 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "thelastofus", name: "The Last of Us Part I", steamAppId: 1888930, releaseYear: 2023, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "AMD Ryzen 5 1500X", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "AMD Ryzen 7 5800X", ram: 32, vram: 10 } },
   { id: "daysgone", name: "Days Gone", steamAppId: 1259420, releaseYear: 2021, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 780", cpu: "Intel Core i5-2500K", ram: 8, vram: 3 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-4770K", ram: 16, vram: 6 } },
-  { id: "unrealtourn", name: "Unrecord", steamAppId: 2188370, releaseYear: 2025, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-10400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 12 } },
+  { id: "unrealtourn", name: "Unrecord", steamAppId: 2188370, releaseYear: 2025, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-10400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 12 } },
   { id: "blackmythwukong", name: "Black Myth: Wukong", steamAppId: 2358720, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "indianajones", name: "Indiana Jones and the Great Circle", steamAppId: 2677660, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-10700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i7-12900K", ram: 32, vram: 16 } },
   { id: "dragonsdogma2", name: "Dragon's Dogma 2", steamAppId: 2054970, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-10600K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "kingdomcomedeliverance2", name: "Kingdom Come: Deliverance II", steamAppId: 1771300, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-10700K", ram: 32, vram: 12 } },
-  { id: "avowed", name: "Avowed", steamAppId: 2054910, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "kingdomcomedeliverance2", name: "Kingdom Come: Deliverance II", steamAppId: 1771300, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-10700K", ram: 32, vram: 12 } },
+  { id: "avowed", name: "Avowed", steamAppId: 2054910, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "stalker2", name: "S.T.A.L.K.E.R. 2: Heart of Chornobyl", steamAppId: 1643320, releaseYear: 2024, genre: ["FPS", "Survival"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-7700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "metroexodus", name: "Metro Exodus", steamAppId: 412020, releaseYear: 2019, genre: ["FPS", "Survival"], supportedOS: ["windows", "linux"], minRequirements: { gpu: "GTX 670", cpu: "Intel Core i5-4440", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 2070", cpu: "Intel Core i7-4770K", ram: 16, vram: 8 } },
   { id: "farcry6", name: "Far Cry 6", steamAppId: 0, releaseYear: 2021, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "AMD Ryzen 3 1200", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "AMD Ryzen 5 5600X", ram: 16, vram: 8 } },
   { id: "assassinscreedmirage", name: "Assassin's Creed Mirage", steamAppId: 2551630, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070 Ti", cpu: "Intel Core i7-11700K", ram: 16, vram: 8 } },
-  { id: "assassinscreedshadows", name: "Assassin's Creed Shadows", steamAppId: 3035510, releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "assassinscreedshadows", name: "Assassin's Creed Shadows", steamAppId: 3035510, releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "dyinglight2", name: "Dying Light 2 Stay Human", steamAppId: 534380, releaseYear: 2022, genre: ["Action", "Survival"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i3-9100", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-9700K", ram: 16, vram: 10 } },
   { id: "biomutant", name: "Biomutant", steamAppId: 597820, releaseYear: 2021, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4690K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
   { id: "outerworlds", name: "The Outer Worlds", steamAppId: 578650, releaseYear: 2019, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 650 Ti", cpu: "Intel Core i3-3225", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-7700K", ram: 8, vram: 6 } },
@@ -165,7 +262,7 @@ export const games: Game[] = [
   { id: "intothebreach", name: "Into the Breach", steamAppId: 590380, releaseYear: 2018, genre: ["Strategy", "Roguelike"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 1, vram: 1 }, recommendedRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core i3-2100", ram: 2, vram: 1 } },
   { id: "ftl", name: "FTL: Faster Than Light", steamAppId: 212680, releaseYear: 2012, genre: ["Strategy", "Roguelike"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 1, vram: 1 }, recommendedRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core i3-2100", ram: 2, vram: 1 } },
   { id: "slayspire", name: "Slay the Spire", steamAppId: 646570, releaseYear: 2019, genre: ["Roguelike", "Card Game"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 2, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2400", ram: 4, vram: 2 } },
-  { id: "slayspire2", name: "Slay the Spire 2", steamAppId: 2868840, releaseYear: 2025, genre: ["Roguelike", "Card Game"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-6700K", ram: 16, vram: 4 } },
+  { id: "slayspire2", name: "Slay the Spire 2", steamAppId: 2868840, releaseYear: 2025, genre: ["Roguelike", "Card Game"], supportedOS: ["windows", "macos"], hasBenchmark: false, minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-6700K", ram: 16, vram: 4 } },
   { id: "monster_train", name: "Monster Train", steamAppId: 1102190, releaseYear: 2020, genre: ["Roguelike", "Card Game"], supportedOS: ["windows"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2400", ram: 8, vram: 2 } },
   { id: "inscryption", name: "Inscryption", steamAppId: 1092790, releaseYear: 2021, genre: ["Roguelike", "Card Game"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2500", ram: 8, vram: 2 } },
   { id: "cult_of_lamb", name: "Cult of the Lamb", steamAppId: 1313140, releaseYear: 2022, genre: ["Roguelike", "Action"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-4690K", ram: 8, vram: 2 } },
