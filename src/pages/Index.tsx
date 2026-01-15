@@ -7,9 +7,12 @@ import { SpecSelector, SystemSpecs } from '@/components/SpecSelector';
 import { PerformanceDisplay } from '@/components/PerformanceDisplay';
 import { GameReviewSection } from '@/components/GameReviewSection';
 import { UserMenu } from '@/components/UserMenu';
+import { SteamNewReleases } from '@/components/SteamNewReleases';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, ChevronDown, X, Sparkles, Coffee } from 'lucide-react';
+import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
 const GAMES_PER_PAGE = 24;
 const Index = () => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
@@ -145,58 +148,88 @@ const Index = () => {
             </motion.div>}
         </AnimatePresence>
 
-        {/* Genre Filter */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Gamepad2 className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl font-bold text-foreground">Browse Games</h2>
-            <span className="text-muted-foreground">({filteredGames.length} games)</span>
-          </div>
-          
-          <div className="flex flex-wrap gap-2">
-            <Button variant={activeGenre === null ? "default" : "outline"} size="sm" onClick={() => setActiveGenre(null)} className="rounded-full">
-              All
-            </Button>
-            {genres.map(genre => <Button key={genre} variant={activeGenre === genre ? "default" : "outline"} size="sm" onClick={() => {
-            setActiveGenre(activeGenre === genre ? null : genre);
-            setDisplayCount(GAMES_PER_PAGE);
-          }} className="rounded-full">
-                {genre}
-              </Button>)}
-          </div>
-        </div>
+        {/* Browse Tabs */}
+        <Tabs defaultValue="benchmarks" className="w-full">
+          <TabsList className="mb-6 w-full max-w-md mx-auto grid grid-cols-2">
+            <TabsTrigger value="benchmarks" className="gap-2">
+              <Gamepad2 className="w-4 h-4" />
+              Benchmarked Games
+            </TabsTrigger>
+            <TabsTrigger value="new-releases" className="gap-2">
+              <Flame className="w-4 h-4" />
+              New Releases
+            </TabsTrigger>
+          </TabsList>
 
-        {/* Games Grid */}
-        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
-          <AnimatePresence mode="popLayout">
-            {displayedGames.map((game, index) => <motion.div key={game.id} layout initial={{
-            opacity: 0,
-            scale: 0.8
+          <TabsContent value="benchmarks">
+            {/* Genre Filter */}
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <Gamepad2 className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl font-bold text-foreground">Browse Games</h2>
+                <span className="text-muted-foreground">({filteredGames.length} games)</span>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                <Button variant={activeGenre === null ? "default" : "outline"} size="sm" onClick={() => setActiveGenre(null)} className="rounded-full">
+                  All
+                </Button>
+                {genres.map(genre => <Button key={genre} variant={activeGenre === genre ? "default" : "outline"} size="sm" onClick={() => {
+                setActiveGenre(activeGenre === genre ? null : genre);
+                setDisplayCount(GAMES_PER_PAGE);
+              }} className="rounded-full">
+                    {genre}
+                  </Button>)}
+              </div>
+            </div>
+
+            {/* Games Grid */}
+            <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+              <AnimatePresence mode="popLayout">
+                {displayedGames.map((game, index) => <motion.div key={game.id} layout initial={{
+                opacity: 0,
+                scale: 0.8
+              }} animate={{
+                opacity: 1,
+                scale: 1
+              }} exit={{
+                opacity: 0,
+                scale: 0.8
+              }} transition={{
+                delay: index * 0.02
+              }}>
+                    <GameCard game={game} onClick={() => handleGameSelect(game)} />
+                  </motion.div>)}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Load More */}
+            {displayCount < filteredGames.length && <motion.div initial={{
+            opacity: 0
           }} animate={{
-            opacity: 1,
-            scale: 1
-          }} exit={{
-            opacity: 0,
-            scale: 0.8
-          }} transition={{
-            delay: index * 0.02
-          }}>
-                <GameCard game={game} onClick={() => handleGameSelect(game)} />
-              </motion.div>)}
-          </AnimatePresence>
-        </motion.div>
+            opacity: 1
+          }} className="flex justify-center mt-12">
+                <Button onClick={loadMore} variant="outline" size="lg" className="gap-2 rounded-full px-8">
+                  <ChevronDown className="w-5 h-5" />
+                  Load More ({filteredGames.length - displayCount} remaining)
+                </Button>
+              </motion.div>}
+          </TabsContent>
 
-        {/* Load More */}
-        {displayCount < filteredGames.length && <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} className="flex justify-center mt-12">
-            <Button onClick={loadMore} variant="outline" size="lg" className="gap-2 rounded-full px-8">
-              <ChevronDown className="w-5 h-5" />
-              Load More ({filteredGames.length - displayCount} remaining)
-            </Button>
-          </motion.div>}
+          <TabsContent value="new-releases">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <Flame className="w-6 h-6 text-orange-500" />
+                <h2 className="text-2xl font-bold text-foreground">New Releases</h2>
+                <span className="text-muted-foreground">Live from Steam</span>
+              </div>
+              <p className="text-muted-foreground mb-6">
+                Discover the latest games released on Steam. Click any game for full details, screenshots, and pricing.
+              </p>
+            </div>
+            <SteamNewReleases />
+          </TabsContent>
+        </Tabs>
       </section>
 
       {/* Footer */}
