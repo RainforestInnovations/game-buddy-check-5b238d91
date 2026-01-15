@@ -20,27 +20,29 @@ import {
 } from '@/data/games';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { SystemSpecs } from './SpecSelector';
 
 interface ReviewFormProps {
   gameId: string;
   gameName: string;
   onClose: () => void;
   onSuccess: () => void;
+  defaultSpecs?: SystemSpecs;
 }
 
-export function ReviewForm({ gameId, gameName, onClose, onSuccess }: ReviewFormProps) {
+export function ReviewForm({ gameId, gameName, onClose, onSuccess, defaultSpecs }: ReviewFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [content, setContent] = useState('');
   
-  // System specs state
-  const [selectedGpu, setSelectedGpu] = useState(nvidiaGpuOptions[0].name);
-  const [selectedCpu, setSelectedCpu] = useState(intelCpuOptions[0].name);
-  const [selectedRam, setSelectedRam] = useState('16');
-  const [selectedOs, setSelectedOs] = useState<string>('windows');
-  const [selectedResolution, setSelectedResolution] = useState('1080p');
+  // System specs state - use defaults from parent if available
+  const [selectedGpu, setSelectedGpu] = useState(defaultSpecs?.gpu || nvidiaGpuOptions[0].name);
+  const [selectedCpu, setSelectedCpu] = useState(defaultSpecs?.cpu || intelCpuOptions[0].name);
+  const [selectedRam, setSelectedRam] = useState(defaultSpecs?.ram?.toString() || '16');
+  const [selectedOs, setSelectedOs] = useState<string>(defaultSpecs?.os || 'windows');
+  const [selectedResolution, setSelectedResolution] = useState<string>(defaultSpecs?.resolution || '1080p');
 
   const handleGpuChange = (gpuName: string) => {
     setSelectedGpu(gpuName);

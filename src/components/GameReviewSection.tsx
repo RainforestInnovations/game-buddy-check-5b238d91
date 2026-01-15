@@ -7,13 +7,15 @@ import { ReviewList } from './ReviewList';
 import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { Link } from 'react-router-dom';
+import { SystemSpecs } from './SpecSelector';
 
 interface GameReviewSectionProps {
   gameId: string;
   gameName: string;
+  currentSpecs?: SystemSpecs;
 }
 
-export function GameReviewSection({ gameId, gameName }: GameReviewSectionProps) {
+export function GameReviewSection({ gameId, gameName, currentSpecs }: GameReviewSectionProps) {
   const [showForm, setShowForm] = useState(false);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [user, setUser] = useState<User | null>(null);
@@ -73,6 +75,7 @@ export function GameReviewSection({ gameId, gameName }: GameReviewSectionProps) 
             gameName={gameName}
             onClose={() => setShowForm(false)}
             onSuccess={handleReviewSuccess}
+            defaultSpecs={currentSpecs}
           />
         )}
       </AnimatePresence>
