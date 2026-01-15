@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      reviews: {
+        Row: {
+          content: string
+          cpu: string | null
+          created_at: string
+          game_id: string
+          gpu: string | null
+          id: string
+          os: string | null
+          ram: string | null
+          rating: number | null
+          resolution: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          cpu?: string | null
+          created_at?: string
+          game_id: string
+          gpu?: string | null
+          id?: string
+          os?: string | null
+          ram?: string | null
+          rating?: number | null
+          resolution?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          content?: string
+          cpu?: string | null
+          created_at?: string
+          game_id?: string
+          gpu?: string | null
+          id?: string
+          os?: string | null
+          ram?: string | null
+          rating?: number | null
+          resolution?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

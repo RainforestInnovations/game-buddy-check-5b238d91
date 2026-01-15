@@ -5,6 +5,7 @@ import { GameCard } from '@/components/GameCard';
 import { SearchBar } from '@/components/SearchBar';
 import { SpecSelector, SystemSpecs } from '@/components/SpecSelector';
 import { PerformanceDisplay } from '@/components/PerformanceDisplay';
+import { GameReviewSection } from '@/components/GameReviewSection';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -134,6 +135,11 @@ const Index = () => {
                 <X className="w-5 h-5" />
               </button>
               <PerformanceDisplay game={selectedGame} specs={specs} />
+              
+              {/* Reviews Section */}
+              <div className="mt-8">
+                <GameReviewSection gameId={selectedGame.id} gameName={selectedGame.name} />
+              </div>
             </motion.div>}
         </AnimatePresence>
 
