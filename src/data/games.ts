@@ -761,16 +761,29 @@ export const osOptions = [
   { value: 'linux', label: 'Linux' }
 ] as const;
 
+export type QualityPreset = 'low' | 'medium' | 'high' | 'ultra';
+
+export const qualityOptions: { value: QualityPreset; label: string; multiplier: number }[] = [
+  { value: 'low', label: 'Low', multiplier: 1.8 },
+  { value: 'medium', label: 'Medium', multiplier: 1.3 },
+  { value: 'high', label: 'High', multiplier: 1.0 },
+  { value: 'ultra', label: 'Ultra', multiplier: 0.7 }
+];
+
 export function calculatePerformance(
   game: Game,
   gpuTier: number,
   cpuTier: number,
   ram: number,
   vram: number,
-  resolution: '1080p' | '1440p' | '4k' = '1080p'
+  resolution: '1080p' | '1440p' | '4k' = '1080p',
+  qualityPreset: QualityPreset = 'high'
 ): PerformanceResult {
   // Get resolution multiplier
   const resMultiplier = resolutionOptions.find(r => r.value === resolution)?.multiplier ?? 1;
+  
+  // Get quality multiplier
+  const qualityMultiplier = qualityOptions.find(q => q.value === qualityPreset)?.multiplier ?? 1;
   
   // Base performance calculation
   const minGpuTier = 3; // Approximate tier for min requirements
@@ -795,11 +808,11 @@ export function calculatePerformance(
   const vramScore = Math.min(100, (vram / game.recommendedRequirements.vram) * 100);
   performanceScore += vramScore * 0.05;
   
-  // Calculate FPS based on game requirements and performance score, adjusted for resolution
+  // Calculate FPS based on game requirements and performance score, adjusted for resolution and quality
   const baseFps = 30;
   const maxFps = 240;
   const rawAvgFps = baseFps + (performanceScore / 100) * (maxFps - baseFps);
-  const avgFps = Math.round(rawAvgFps * resMultiplier);
+  const avgFps = Math.round(rawAvgFps * resMultiplier * qualityMultiplier);
   
   // Low FPS (1% lows)
   const lowFps = Math.round(avgFps * 0.6);
