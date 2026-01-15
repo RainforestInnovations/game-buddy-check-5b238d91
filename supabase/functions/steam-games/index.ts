@@ -71,6 +71,53 @@ serve(async (req) => {
       });
     }
 
+    if (type === 'game_details') {
+      const { appid } = await req.json();
+      
+      if (!appid) {
+        return new Response(JSON.stringify({ error: 'appid required' }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      const detailResponse = await fetch(
+        `https://store.steampowered.com/api/appdetails?appids=${appid}&cc=us&l=en`
+      );
+      const detailData = await detailResponse.json();
+      const gameDetails = detailData?.[appid]?.data;
+
+      if (!gameDetails) {
+        return new Response(JSON.stringify({ error: 'Game not found' }), {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      const game = {
+        appid: parseInt(appid),
+        name: gameDetails.name,
+        releaseDate: gameDetails.release_date?.date || 'Unknown',
+        headerImage: gameDetails.header_image,
+        shortDescription: gameDetails.short_description || '',
+        detailedDescription: gameDetails.detailed_description || '',
+        genres: gameDetails.genres?.map((g: any) => g.description) || [],
+        platforms: gameDetails.platforms || { windows: true, mac: false, linux: false },
+        priceOverview: gameDetails.price_overview,
+        metacritic: gameDetails.metacritic,
+        screenshots: gameDetails.screenshots?.slice(0, 6).map((s: any) => s.path_thumbnail) || [],
+        developers: gameDetails.developers || [],
+        publishers: gameDetails.publishers || [],
+        categories: gameDetails.categories?.map((c: any) => c.description) || [],
+        recommendations: gameDetails.recommendations?.total,
+        website: gameDetails.website,
+      };
+
+      return new Response(JSON.stringify({ game }), {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     if (type === 'search') {
       const { query } = await req.json();
       // Search Steam store

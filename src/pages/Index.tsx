@@ -8,6 +8,7 @@ import { PerformanceDisplay } from '@/components/PerformanceDisplay';
 import { GameReviewSection } from '@/components/GameReviewSection';
 import { UserMenu } from '@/components/UserMenu';
 import { SteamNewReleases } from '@/components/SteamNewReleases';
+import { GameDetailsModal } from '@/components/GameDetailsModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const GAMES_PER_PAGE = 24;
 const Index = () => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [detailsGame, setDetailsGame] = useState<Game | null>(null);
   const [specs, setSpecs] = useState<SystemSpecs | null>(null);
   const [displayCount, setDisplayCount] = useState(GAMES_PER_PAGE);
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
@@ -198,7 +200,11 @@ const Index = () => {
               }} transition={{
                 delay: index * 0.02
               }}>
-                    <GameCard game={game} onClick={() => handleGameSelect(game)} />
+                    <GameCard 
+                      game={game} 
+                      onClick={() => handleGameSelect(game)} 
+                      onInfoClick={() => setDetailsGame(game)}
+                    />
                   </motion.div>)}
               </AnimatePresence>
             </motion.div>
@@ -245,6 +251,13 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      {/* Game Details Modal */}
+      <GameDetailsModal 
+        game={detailsGame} 
+        open={!!detailsGame} 
+        onOpenChange={(open) => !open && setDetailsGame(null)} 
+      />
     </div>;
 };
 export default Index;
