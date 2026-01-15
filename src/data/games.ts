@@ -293,138 +293,195 @@ export interface PerformanceResult {
   benchmarkVideoId: string;
 }
 
+export const resolutionOptions = [
+  { value: '1080p', label: '1080p (1920x1080)', multiplier: 1 },
+  { value: '1440p', label: '1440p (2560x1440)', multiplier: 0.65 },
+  { value: '4k', label: '4K (3840x2160)', multiplier: 0.4 }
+] as const;
+
 export const gpuOptions = [
-  { name: "RTX 4090", tier: 10, vramOptions: [24] },
-  { name: "RTX 4080 Super", tier: 9.5, vramOptions: [16] },
-  { name: "RTX 4080", tier: 9.3, vramOptions: [16] },
-  { name: "RTX 4070 Ti Super", tier: 9, vramOptions: [16] },
-  { name: "RTX 4070 Ti", tier: 8.8, vramOptions: [12] },
-  { name: "RTX 4070 Super", tier: 8.5, vramOptions: [12] },
-  { name: "RTX 4070", tier: 8.2, vramOptions: [12] },
-  { name: "RTX 4060 Ti", tier: 7.8, vramOptions: [8, 16] },
-  { name: "RTX 4060", tier: 7.5, vramOptions: [8] },
-  { name: "RTX 3090 Ti", tier: 9.2, vramOptions: [24] },
-  { name: "RTX 3090", tier: 9, vramOptions: [24] },
-  { name: "RTX 3080 Ti", tier: 8.8, vramOptions: [12] },
-  { name: "RTX 3080", tier: 8.5, vramOptions: [10, 12] },
-  { name: "RTX 3070 Ti", tier: 7.8, vramOptions: [8] },
-  { name: "RTX 3070", tier: 7.5, vramOptions: [8] },
-  { name: "RTX 3060 Ti", tier: 7.2, vramOptions: [8] },
-  { name: "RTX 3060", tier: 6.8, vramOptions: [8, 12] },
+  // NVIDIA RTX 50 Series
+  { name: "RTX 5090", tier: 10, vramOptions: [32] },
+  { name: "RTX 5080", tier: 9.7, vramOptions: [16] },
+  { name: "RTX 5070 Ti", tier: 9.3, vramOptions: [16] },
+  { name: "RTX 5070", tier: 9, vramOptions: [12] },
+  // NVIDIA RTX 40 Series
+  { name: "RTX 4090", tier: 9.5, vramOptions: [24] },
+  { name: "RTX 4080 Super", tier: 9.2, vramOptions: [16] },
+  { name: "RTX 4080", tier: 9, vramOptions: [16] },
+  { name: "RTX 4070 Ti Super", tier: 8.7, vramOptions: [16] },
+  { name: "RTX 4070 Ti", tier: 8.5, vramOptions: [12] },
+  { name: "RTX 4070 Super", tier: 8.3, vramOptions: [12] },
+  { name: "RTX 4070", tier: 8, vramOptions: [12] },
+  { name: "RTX 4060 Ti", tier: 7.5, vramOptions: [8, 16] },
+  { name: "RTX 4060", tier: 7.2, vramOptions: [8] },
+  // NVIDIA RTX 30 Series
+  { name: "RTX 3090 Ti", tier: 8.8, vramOptions: [24] },
+  { name: "RTX 3090", tier: 8.5, vramOptions: [24] },
+  { name: "RTX 3080 Ti", tier: 8.3, vramOptions: [12] },
+  { name: "RTX 3080", tier: 8, vramOptions: [10, 12] },
+  { name: "RTX 3070 Ti", tier: 7.5, vramOptions: [8] },
+  { name: "RTX 3070", tier: 7.2, vramOptions: [8] },
+  { name: "RTX 3060 Ti", tier: 6.8, vramOptions: [8] },
+  { name: "RTX 3060", tier: 6.5, vramOptions: [8, 12] },
   { name: "RTX 3050", tier: 5.5, vramOptions: [8] },
-  { name: "RTX 2080 Ti", tier: 8, vramOptions: [11] },
-  { name: "RTX 2080 Super", tier: 7.5, vramOptions: [8] },
-  { name: "RTX 2080", tier: 7.3, vramOptions: [8] },
-  { name: "RTX 2070 Super", tier: 7, vramOptions: [8] },
-  { name: "RTX 2070", tier: 6.7, vramOptions: [8] },
-  { name: "RTX 2060 Super", tier: 6.5, vramOptions: [8] },
-  { name: "RTX 2060", tier: 6.2, vramOptions: [6, 12] },
-  { name: "GTX 1080 Ti", tier: 7, vramOptions: [11] },
-  { name: "GTX 1080", tier: 6.3, vramOptions: [8] },
-  { name: "GTX 1070 Ti", tier: 5.8, vramOptions: [8] },
-  { name: "GTX 1070", tier: 5.5, vramOptions: [8] },
-  { name: "GTX 1660 Ti", tier: 5.3, vramOptions: [6] },
-  { name: "GTX 1660 Super", tier: 5.2, vramOptions: [6] },
-  { name: "GTX 1660", tier: 5, vramOptions: [6] },
-  { name: "GTX 1650 Super", tier: 4.5, vramOptions: [4] },
-  { name: "GTX 1650", tier: 4.2, vramOptions: [4] },
-  { name: "GTX 1060", tier: 4.5, vramOptions: [3, 6] },
-  { name: "GTX 1050 Ti", tier: 3.8, vramOptions: [4] },
-  { name: "GTX 1050", tier: 3.5, vramOptions: [2] },
-  { name: "GTX 980 Ti", tier: 5, vramOptions: [6] },
-  { name: "GTX 980", tier: 4.3, vramOptions: [4] },
-  { name: "GTX 970", tier: 4, vramOptions: [4] },
-  { name: "GTX 960", tier: 3.3, vramOptions: [2, 4] },
-  { name: "GTX 950", tier: 3, vramOptions: [2] },
-  { name: "RX 7900 XTX", tier: 9.5, vramOptions: [24] },
-  { name: "RX 7900 XT", tier: 9, vramOptions: [20] },
-  { name: "RX 7900 GRE", tier: 8.5, vramOptions: [16] },
-  { name: "RX 7800 XT", tier: 8, vramOptions: [16] },
-  { name: "RX 7700 XT", tier: 7.5, vramOptions: [12] },
-  { name: "RX 7600 XT", tier: 6.8, vramOptions: [16] },
-  { name: "RX 7600", tier: 6.5, vramOptions: [8] },
-  { name: "RX 6950 XT", tier: 9, vramOptions: [16] },
-  { name: "RX 6900 XT", tier: 8.8, vramOptions: [16] },
-  { name: "RX 6800 XT", tier: 8.3, vramOptions: [16] },
-  { name: "RX 6800", tier: 7.8, vramOptions: [16] },
-  { name: "RX 6750 XT", tier: 7.3, vramOptions: [12] },
-  { name: "RX 6700 XT", tier: 7, vramOptions: [12] },
-  { name: "RX 6650 XT", tier: 6.3, vramOptions: [8] },
-  { name: "RX 6600 XT", tier: 6, vramOptions: [8] },
-  { name: "RX 6600", tier: 5.5, vramOptions: [8] },
-  { name: "RX 6500 XT", tier: 4, vramOptions: [4] },
-  { name: "RX 5700 XT", tier: 6.5, vramOptions: [8] },
-  { name: "RX 5700", tier: 6, vramOptions: [8] },
-  { name: "RX 5600 XT", tier: 5.5, vramOptions: [6] },
-  { name: "RX 580", tier: 4.5, vramOptions: [4, 8] },
-  { name: "RX 570", tier: 4, vramOptions: [4, 8] },
-  { name: "Intel Arc A770", tier: 6.8, vramOptions: [16] },
-  { name: "Intel Arc A750", tier: 6.3, vramOptions: [8] },
-  { name: "Intel Arc A580", tier: 5.5, vramOptions: [8] },
-  { name: "Intel Arc A380", tier: 3.5, vramOptions: [6] }
+  // NVIDIA RTX 20 Series
+  { name: "RTX 2080 Ti", tier: 7.8, vramOptions: [11] },
+  { name: "RTX 2080 Super", tier: 7.3, vramOptions: [8] },
+  { name: "RTX 2080", tier: 7, vramOptions: [8] },
+  { name: "RTX 2070 Super", tier: 6.8, vramOptions: [8] },
+  { name: "RTX 2070", tier: 6.5, vramOptions: [8] },
+  { name: "RTX 2060 Super", tier: 6.2, vramOptions: [8] },
+  { name: "RTX 2060", tier: 6, vramOptions: [6, 12] },
+  // NVIDIA GTX 10 Series
+  { name: "GTX 1080 Ti", tier: 6.8, vramOptions: [11] },
+  { name: "GTX 1080", tier: 6, vramOptions: [8] },
+  { name: "GTX 1070 Ti", tier: 5.5, vramOptions: [8] },
+  { name: "GTX 1070", tier: 5.2, vramOptions: [8] },
+  { name: "GTX 1660 Ti", tier: 5, vramOptions: [6] },
+  { name: "GTX 1660 Super", tier: 4.8, vramOptions: [6] },
+  { name: "GTX 1660", tier: 4.5, vramOptions: [6] },
+  { name: "GTX 1650 Super", tier: 4.2, vramOptions: [4] },
+  { name: "GTX 1650", tier: 4, vramOptions: [4] },
+  { name: "GTX 1060", tier: 4.2, vramOptions: [3, 6] },
+  { name: "GTX 1050 Ti", tier: 3.5, vramOptions: [4] },
+  { name: "GTX 1050", tier: 3.2, vramOptions: [2] },
+  // NVIDIA GTX 9 Series
+  { name: "GTX 980 Ti", tier: 4.8, vramOptions: [6] },
+  { name: "GTX 980", tier: 4, vramOptions: [4] },
+  { name: "GTX 970", tier: 3.8, vramOptions: [4] },
+  { name: "GTX 960", tier: 3, vramOptions: [2, 4] },
+  { name: "GTX 950", tier: 2.8, vramOptions: [2] },
+  // AMD RX 9000 Series
+  { name: "RX 9070 XT", tier: 9.3, vramOptions: [16] },
+  { name: "RX 9070", tier: 8.8, vramOptions: [16] },
+  // AMD RX 7000 Series
+  { name: "RX 7900 XTX", tier: 9.2, vramOptions: [24] },
+  { name: "RX 7900 XT", tier: 8.7, vramOptions: [20] },
+  { name: "RX 7900 GRE", tier: 8.2, vramOptions: [16] },
+  { name: "RX 7800 XT", tier: 7.7, vramOptions: [16] },
+  { name: "RX 7700 XT", tier: 7.2, vramOptions: [12] },
+  { name: "RX 7600 XT", tier: 6.5, vramOptions: [16] },
+  { name: "RX 7600", tier: 6.2, vramOptions: [8] },
+  // AMD RX 6000 Series
+  { name: "RX 6950 XT", tier: 8.5, vramOptions: [16] },
+  { name: "RX 6900 XT", tier: 8.3, vramOptions: [16] },
+  { name: "RX 6800 XT", tier: 8, vramOptions: [16] },
+  { name: "RX 6800", tier: 7.5, vramOptions: [16] },
+  { name: "RX 6750 XT", tier: 7, vramOptions: [12] },
+  { name: "RX 6700 XT", tier: 6.7, vramOptions: [12] },
+  { name: "RX 6650 XT", tier: 6, vramOptions: [8] },
+  { name: "RX 6600 XT", tier: 5.7, vramOptions: [8] },
+  { name: "RX 6600", tier: 5.2, vramOptions: [8] },
+  { name: "RX 6500 XT", tier: 3.8, vramOptions: [4] },
+  // AMD RX 5000 Series
+  { name: "RX 5700 XT", tier: 6.2, vramOptions: [8] },
+  { name: "RX 5700", tier: 5.8, vramOptions: [8] },
+  { name: "RX 5600 XT", tier: 5.2, vramOptions: [6] },
+  { name: "RX 580", tier: 4.2, vramOptions: [4, 8] },
+  { name: "RX 570", tier: 3.8, vramOptions: [4, 8] },
+  // Intel Arc
+  { name: "Intel Arc B580", tier: 6.5, vramOptions: [12] },
+  { name: "Intel Arc A770", tier: 6.5, vramOptions: [16] },
+  { name: "Intel Arc A750", tier: 6, vramOptions: [8] },
+  { name: "Intel Arc A580", tier: 5.2, vramOptions: [8] },
+  { name: "Intel Arc A380", tier: 3.2, vramOptions: [6] }
 ];
 
-export const cpuOptions = [
-  { name: "Intel Core i9-14900K", tier: 10 },
-  { name: "Intel Core i9-13900K", tier: 9.8 },
-  { name: "Intel Core i9-12900K", tier: 9.3 },
-  { name: "Intel Core i7-14700K", tier: 9.5 },
-  { name: "Intel Core i7-13700K", tier: 9.2 },
-  { name: "Intel Core i7-12700K", tier: 8.8 },
-  { name: "Intel Core i7-11700K", tier: 8 },
-  { name: "Intel Core i7-10700K", tier: 7.5 },
-  { name: "Intel Core i7-9700K", tier: 7 },
-  { name: "Intel Core i7-8700K", tier: 6.5 },
-  { name: "Intel Core i7-7700K", tier: 6 },
-  { name: "Intel Core i7-6700K", tier: 5.5 },
-  { name: "Intel Core i7-4790K", tier: 5 },
-  { name: "Intel Core i7-4770K", tier: 4.8 },
-  { name: "Intel Core i5-14600K", tier: 9 },
-  { name: "Intel Core i5-13600K", tier: 8.8 },
-  { name: "Intel Core i5-12600K", tier: 8.3 },
-  { name: "Intel Core i5-11600K", tier: 7.5 },
-  { name: "Intel Core i5-10600K", tier: 7 },
-  { name: "Intel Core i5-9600K", tier: 6.5 },
-  { name: "Intel Core i5-8600K", tier: 6 },
-  { name: "Intel Core i5-8400", tier: 5.5 },
-  { name: "Intel Core i5-7600K", tier: 5.3 },
-  { name: "Intel Core i5-6600K", tier: 5 },
-  { name: "Intel Core i5-4690K", tier: 4.5 },
-  { name: "Intel Core i5-4590", tier: 4.3 },
-  { name: "Intel Core i5-3570K", tier: 4 },
-  { name: "Intel Core i5-2500K", tier: 3.8 },
-  { name: "Intel Core i3-14100", tier: 6.5 },
-  { name: "Intel Core i3-13100", tier: 6.3 },
-  { name: "Intel Core i3-12100", tier: 6 },
-  { name: "Intel Core i3-10100", tier: 5 },
-  { name: "AMD Ryzen 9 7950X3D", tier: 10 },
-  { name: "AMD Ryzen 9 7950X", tier: 9.8 },
-  { name: "AMD Ryzen 9 7900X3D", tier: 9.7 },
-  { name: "AMD Ryzen 9 7900X", tier: 9.5 },
-  { name: "AMD Ryzen 9 5950X", tier: 9 },
-  { name: "AMD Ryzen 9 5900X", tier: 8.8 },
-  { name: "AMD Ryzen 9 3950X", tier: 8.5 },
-  { name: "AMD Ryzen 9 3900X", tier: 8.3 },
-  { name: "AMD Ryzen 7 7800X3D", tier: 9.8 },
-  { name: "AMD Ryzen 7 7700X", tier: 9.2 },
-  { name: "AMD Ryzen 7 5800X3D", tier: 9 },
-  { name: "AMD Ryzen 7 5800X", tier: 8.5 },
-  { name: "AMD Ryzen 7 5700X", tier: 8 },
-  { name: "AMD Ryzen 7 3800X", tier: 7.5 },
-  { name: "AMD Ryzen 7 3700X", tier: 7.3 },
-  { name: "AMD Ryzen 7 2700X", tier: 6.5 },
-  { name: "AMD Ryzen 5 7600X", tier: 8.5 },
-  { name: "AMD Ryzen 5 7600", tier: 8.2 },
-  { name: "AMD Ryzen 5 5600X", tier: 8 },
-  { name: "AMD Ryzen 5 5600", tier: 7.8 },
-  { name: "AMD Ryzen 5 3600X", tier: 7 },
-  { name: "AMD Ryzen 5 3600", tier: 6.8 },
-  { name: "AMD Ryzen 5 2600X", tier: 6 },
-  { name: "AMD Ryzen 5 2600", tier: 5.8 },
-  { name: "AMD Ryzen 5 1600", tier: 5 },
-  { name: "AMD Ryzen 3 3300X", tier: 5.5 },
-  { name: "AMD Ryzen 3 3100", tier: 5 }
+export const intelCpuOptions = [
+  // Intel Core Ultra 200 Series
+  { name: "Intel Core Ultra 9 285K", tier: 10 },
+  { name: "Intel Core Ultra 7 265K", tier: 9.7 },
+  { name: "Intel Core Ultra 5 245K", tier: 9.3 },
+  // Intel 14th Gen
+  { name: "Intel Core i9-14900K", tier: 9.5 },
+  { name: "Intel Core i9-14900KF", tier: 9.5 },
+  { name: "Intel Core i7-14700K", tier: 9.2 },
+  { name: "Intel Core i7-14700KF", tier: 9.2 },
+  { name: "Intel Core i5-14600K", tier: 8.8 },
+  { name: "Intel Core i5-14600KF", tier: 8.8 },
+  // Intel 13th Gen
+  { name: "Intel Core i9-13900K", tier: 9.3 },
+  { name: "Intel Core i9-13900KF", tier: 9.3 },
+  { name: "Intel Core i7-13700K", tier: 8.8 },
+  { name: "Intel Core i7-13700KF", tier: 8.8 },
+  { name: "Intel Core i5-13600K", tier: 8.5 },
+  { name: "Intel Core i5-13600KF", tier: 8.5 },
+  // Intel 12th Gen
+  { name: "Intel Core i9-12900K", tier: 8.8 },
+  { name: "Intel Core i7-12700K", tier: 8.3 },
+  { name: "Intel Core i5-12600K", tier: 8 },
+  // Intel 11th Gen
+  { name: "Intel Core i9-11900K", tier: 7.8 },
+  { name: "Intel Core i7-11700K", tier: 7.5 },
+  { name: "Intel Core i5-11600K", tier: 7.2 },
+  // Intel 10th Gen
+  { name: "Intel Core i9-10900K", tier: 7.5 },
+  { name: "Intel Core i7-10700K", tier: 7.2 },
+  { name: "Intel Core i5-10600K", tier: 6.8 },
+  // Older Gen
+  { name: "Intel Core i7-9700K", tier: 6.5 },
+  { name: "Intel Core i5-9600K", tier: 6.2 },
+  { name: "Intel Core i7-8700K", tier: 6.2 },
+  { name: "Intel Core i5-8600K", tier: 5.8 },
+  { name: "Intel Core i5-8400", tier: 5.2 },
+  { name: "Intel Core i7-7700K", tier: 5.5 },
+  { name: "Intel Core i5-7600K", tier: 5 },
+  { name: "Intel Core i7-6700K", tier: 5.2 },
+  { name: "Intel Core i5-6600K", tier: 4.8 },
+  { name: "Intel Core i7-4790K", tier: 4.8 },
+  { name: "Intel Core i5-4690K", tier: 4.3 },
+  { name: "Intel Core i5-3570K", tier: 3.8 },
+  { name: "Intel Core i5-2500K", tier: 3.5 },
+  { name: "Intel Core i3-14100", tier: 6.2 },
+  { name: "Intel Core i3-13100", tier: 6 },
+  { name: "Intel Core i3-12100", tier: 5.8 },
+  { name: "Intel Core i3-10100", tier: 4.8 }
 ];
+
+export const amdCpuOptions = [
+  // AMD Ryzen 9000 Series
+  { name: "AMD Ryzen 9 9950X", tier: 10 },
+  { name: "AMD Ryzen 9 9900X", tier: 9.7 },
+  { name: "AMD Ryzen 7 9800X3D", tier: 10 },
+  { name: "AMD Ryzen 7 9700X", tier: 9.3 },
+  { name: "AMD Ryzen 5 9600X", tier: 8.8 },
+  // AMD Ryzen 7000 Series
+  { name: "AMD Ryzen 9 7950X3D", tier: 9.7 },
+  { name: "AMD Ryzen 9 7950X", tier: 9.5 },
+  { name: "AMD Ryzen 9 7900X3D", tier: 9.4 },
+  { name: "AMD Ryzen 9 7900X", tier: 9.2 },
+  { name: "AMD Ryzen 7 7800X3D", tier: 9.5 },
+  { name: "AMD Ryzen 7 7700X", tier: 8.8 },
+  { name: "AMD Ryzen 7 7700", tier: 8.5 },
+  { name: "AMD Ryzen 5 7600X", tier: 8.3 },
+  { name: "AMD Ryzen 5 7600", tier: 8 },
+  // AMD Ryzen 5000 Series
+  { name: "AMD Ryzen 9 5950X", tier: 8.8 },
+  { name: "AMD Ryzen 9 5900X", tier: 8.5 },
+  { name: "AMD Ryzen 7 5800X3D", tier: 8.8 },
+  { name: "AMD Ryzen 7 5800X", tier: 8.2 },
+  { name: "AMD Ryzen 7 5700X", tier: 7.8 },
+  { name: "AMD Ryzen 5 5600X", tier: 7.8 },
+  { name: "AMD Ryzen 5 5600", tier: 7.5 },
+  // AMD Ryzen 3000 Series
+  { name: "AMD Ryzen 9 3950X", tier: 8 },
+  { name: "AMD Ryzen 9 3900X", tier: 7.8 },
+  { name: "AMD Ryzen 7 3800X", tier: 7.2 },
+  { name: "AMD Ryzen 7 3700X", tier: 7 },
+  { name: "AMD Ryzen 5 3600X", tier: 6.7 },
+  { name: "AMD Ryzen 5 3600", tier: 6.5 },
+  { name: "AMD Ryzen 3 3300X", tier: 5.3 },
+  { name: "AMD Ryzen 3 3100", tier: 4.8 },
+  // AMD Ryzen 2000 Series
+  { name: "AMD Ryzen 7 2700X", tier: 6.2 },
+  { name: "AMD Ryzen 5 2600X", tier: 5.8 },
+  { name: "AMD Ryzen 5 2600", tier: 5.5 },
+  { name: "AMD Ryzen 5 1600", tier: 4.8 }
+];
+
+// Combined for backward compatibility
+export const cpuOptions = [...intelCpuOptions, ...amdCpuOptions];
 
 export const ramOptions = [4, 8, 12, 16, 24, 32, 48, 64, 128];
 
@@ -439,8 +496,12 @@ export function calculatePerformance(
   gpuTier: number,
   cpuTier: number,
   ram: number,
-  vram: number
+  vram: number,
+  resolution: '1080p' | '1440p' | '4k' = '1080p'
 ): PerformanceResult {
+  // Get resolution multiplier
+  const resMultiplier = resolutionOptions.find(r => r.value === resolution)?.multiplier ?? 1;
+  
   // Base performance calculation
   const minGpuTier = 3; // Approximate tier for min requirements
   const recGpuTier = 7; // Approximate tier for recommended requirements
@@ -464,10 +525,11 @@ export function calculatePerformance(
   const vramScore = Math.min(100, (vram / game.recommendedRequirements.vram) * 100);
   performanceScore += vramScore * 0.05;
   
-  // Calculate FPS based on game requirements and performance score
+  // Calculate FPS based on game requirements and performance score, adjusted for resolution
   const baseFps = 30;
   const maxFps = 240;
-  const avgFps = Math.round(baseFps + (performanceScore / 100) * (maxFps - baseFps));
+  const rawAvgFps = baseFps + (performanceScore / 100) * (maxFps - baseFps);
+  const avgFps = Math.round(rawAvgFps * resMultiplier);
   
   // Low FPS (1% lows)
   const lowFps = Math.round(avgFps * 0.6);
