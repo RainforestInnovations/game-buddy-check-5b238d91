@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { gpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
 import { Cpu, HardDrive, Monitor, Settings2, Maximize, Apple } from 'lucide-react';
 
@@ -159,45 +160,79 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           </Select>
         </div>
 
-        {/* CPU Selection with Intel/AMD/Apple Groups */}
-        <div className="space-y-2">
+        {/* CPU Selection with Intel/AMD/Apple Tabs */}
+        <div className="space-y-2 md:col-span-2 lg:col-span-3">
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Cpu className="w-4 h-4" />
             Processor
           </Label>
-          <Select value={selectedCpu.name} onValueChange={handleCpuChange}>
-            <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="max-h-[300px]">
-              <SelectGroup>
-                <SelectLabel className="text-blue-400 font-semibold">Intel</SelectLabel>
-                {intelCpuOptions.map((cpu) => (
-                  <SelectItem key={cpu.name} value={cpu.name}>
-                    {cpu.name}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-              <SelectGroup>
-                <SelectLabel className="text-red-400 font-semibold">AMD</SelectLabel>
-                {amdCpuOptions.map((cpu) => (
-                  <SelectItem key={cpu.name} value={cpu.name} className="text-foreground">
-                    {cpu.name}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-              <SelectGroup>
-                <SelectLabel className="text-gray-300 font-semibold flex items-center gap-1">
-                  <Apple className="w-3 h-3" /> Apple
-                </SelectLabel>
-                {appleCpuOptions.map((cpu) => (
-                  <SelectItem key={cpu.name} value={cpu.name}>
-                    {cpu.name}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <Tabs 
+            defaultValue="intel" 
+            className="w-full"
+            onValueChange={(tab) => {
+              if (tab === 'intel') {
+                handleCpuChange(intelCpuOptions[0].name);
+              } else if (tab === 'amd') {
+                handleCpuChange(amdCpuOptions[0].name);
+              } else if (tab === 'apple') {
+                handleCpuChange(appleCpuOptions[0].name);
+              }
+            }}
+          >
+            <TabsList className="grid w-full grid-cols-3 mb-3">
+              <TabsTrigger value="intel" className="text-blue-400 data-[state=active]:text-blue-400 data-[state=active]:bg-blue-400/20">
+                Intel
+              </TabsTrigger>
+              <TabsTrigger value="amd" className="text-red-400 data-[state=active]:text-red-400 data-[state=active]:bg-red-400/20">
+                AMD
+              </TabsTrigger>
+              <TabsTrigger value="apple" className="data-[state=active]:bg-muted flex items-center gap-1">
+                <Apple className="w-3 h-3" /> Apple
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="intel">
+              <Select value={isAppleSilicon ? '' : selectedCpu.name} onValueChange={handleCpuChange}>
+                <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                  <SelectValue placeholder="Select Intel CPU" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  {intelCpuOptions.map((cpu) => (
+                    <SelectItem key={cpu.name} value={cpu.name}>
+                      {cpu.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </TabsContent>
+            <TabsContent value="amd">
+              <Select value={isAppleSilicon ? '' : selectedCpu.name} onValueChange={handleCpuChange}>
+                <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                  <SelectValue placeholder="Select AMD CPU" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  {amdCpuOptions.map((cpu) => (
+                    <SelectItem key={cpu.name} value={cpu.name}>
+                      {cpu.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </TabsContent>
+            <TabsContent value="apple">
+              <Select value={isAppleSilicon ? selectedCpu.name : ''} onValueChange={handleCpuChange}>
+                <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                  <SelectValue placeholder="Select Apple Chip" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  {appleCpuOptions.map((cpu) => (
+                    <SelectItem key={cpu.name} value={cpu.name}>
+                      {cpu.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </TabsContent>
+          </Tabs>
         </div>
 
         {/* RAM Selection */}
