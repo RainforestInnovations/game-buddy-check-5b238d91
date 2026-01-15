@@ -27,7 +27,7 @@ export function GameCard({ game, onClick }: GameCardProps) {
             (e.target as HTMLImageElement).src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+        <div className="absolute inset-0 bg-background/60 group-hover:bg-background/70 transition-colors" />
         
         {/* OS badges */}
         <div className="absolute top-2 right-2 flex gap-1">
@@ -65,10 +65,8 @@ export function GameCard({ game, onClick }: GameCardProps) {
         </div>
       </div>
       
-      {/* Glow effect */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
-      </div>
+      {/* Hover effect */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border-2 border-primary/30 rounded-xl" />
     </motion.div>
   );
 }
