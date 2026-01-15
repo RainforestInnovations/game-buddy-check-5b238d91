@@ -22,9 +22,20 @@ const Index = () => {
   }, []);
 
   const filteredGames = useMemo(() => {
-    if (!activeGenre) return games;
-    return games.filter(g => g.genre.includes(activeGenre));
-  }, [activeGenre]);
+    let filtered = games;
+    
+    // Filter by OS if specs are selected
+    if (specs?.os) {
+      filtered = filtered.filter(g => g.supportedOS.includes(specs.os));
+    }
+    
+    // Filter by genre
+    if (activeGenre) {
+      filtered = filtered.filter(g => g.genre.includes(activeGenre));
+    }
+    
+    return filtered;
+  }, [activeGenre, specs?.os]);
 
   const displayedGames = useMemo(() => {
     return filteredGames.slice(0, displayCount);
