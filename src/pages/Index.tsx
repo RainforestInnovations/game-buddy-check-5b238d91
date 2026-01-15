@@ -13,7 +13,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
 const GAMES_PER_PAGE = 24;
 const Index = () => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
@@ -200,11 +199,7 @@ const Index = () => {
               }} transition={{
                 delay: index * 0.02
               }}>
-                    <GameCard 
-                      game={game} 
-                      onClick={() => handleGameSelect(game)} 
-                      onInfoClick={() => setDetailsGame(game)}
-                    />
+                    <GameCard game={game} onClick={() => handleGameSelect(game)} onInfoClick={() => setDetailsGame(game)} />
                   </motion.div>)}
               </AnimatePresence>
             </motion.div>
@@ -253,11 +248,7 @@ const Index = () => {
       </footer>
 
       {/* Game Details Modal */}
-      <GameDetailsModal 
-        game={detailsGame} 
-        open={!!detailsGame} 
-        onOpenChange={(open) => !open && setDetailsGame(null)} 
-      />
+      <GameDetailsModal game={detailsGame} open={!!detailsGame} onOpenChange={open => !open && setDetailsGame(null)} />
     </div>;
 };
 export default Index;
