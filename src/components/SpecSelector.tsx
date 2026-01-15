@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { gpuOptions, intelCpuOptions, amdCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
+import { gpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { motion } from 'framer-motion';
-import { Cpu, HardDrive, Monitor, Settings2, Maximize } from 'lucide-react';
+import { Cpu, HardDrive, Monitor, Settings2, Maximize, Apple } from 'lucide-react';
 
 export interface SystemSpecs {
   gpu: string;
@@ -27,19 +27,41 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
   const [selectedRam, setSelectedRam] = useState(16);
   const [selectedOs, setSelectedOs] = useState<'windows' | 'macos' | 'linux'>('windows');
   const [selectedResolution, setSelectedResolution] = useState<'1080p' | '1440p' | '4k'>('1080p');
+  const [isAppleSilicon, setIsAppleSilicon] = useState(false);
+
+  // Check if current CPU is Apple Silicon
+  const checkAppleCpu = (cpuName: string) => {
+    return appleCpuOptions.some(c => c.name === cpuName);
+  };
 
   useEffect(() => {
-    onSpecsChange({
-      gpu: selectedGpu.name,
-      gpuTier: selectedGpu.tier,
-      vram: selectedVram,
-      cpu: selectedCpu.name,
-      cpuTier: selectedCpu.tier,
-      ram: selectedRam,
-      os: selectedOs,
-      resolution: selectedResolution
-    });
-  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, selectedResolution, onSpecsChange]);
+    if (isAppleSilicon) {
+      const appleCpu = appleCpuOptions.find(c => c.name === selectedCpu.name);
+      if (appleCpu) {
+        onSpecsChange({
+          gpu: appleCpu.gpu,
+          gpuTier: appleCpu.gpuTier,
+          vram: appleCpu.vram,
+          cpu: selectedCpu.name,
+          cpuTier: selectedCpu.tier,
+          ram: selectedRam,
+          os: 'macos',
+          resolution: selectedResolution
+        });
+      }
+    } else {
+      onSpecsChange({
+        gpu: selectedGpu.name,
+        gpuTier: selectedGpu.tier,
+        vram: selectedVram,
+        cpu: selectedCpu.name,
+        cpuTier: selectedCpu.tier,
+        ram: selectedRam,
+        os: selectedOs,
+        resolution: selectedResolution
+      });
+    }
+  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, selectedResolution, isAppleSilicon, onSpecsChange]);
 
   const handleGpuChange = (gpuName: string) => {
     const gpu = gpuOptions.find(g => g.name === gpuName);
@@ -50,14 +72,28 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
   };
 
   const handleCpuChange = (cpuName: string) => {
+    // Check Apple CPUs first
+    const appleCpu = appleCpuOptions.find(c => c.name === cpuName);
+    if (appleCpu) {
+      setSelectedCpu(appleCpu);
+      setIsAppleSilicon(true);
+      setSelectedOs('macos');
+      return;
+    }
+
+    // Check Intel CPUs
     const intelCpu = intelCpuOptions.find(c => c.name === cpuName);
     if (intelCpu) {
       setSelectedCpu(intelCpu);
+      setIsAppleSilicon(false);
       return;
     }
+
+    // Check AMD CPUs
     const amdCpu = amdCpuOptions.find(c => c.name === cpuName);
     if (amdCpu) {
       setSelectedCpu(amdCpu);
+      setIsAppleSilicon(false);
     }
   };
 
@@ -74,14 +110,19 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* GPU Selection */}
-        <div className="space-y-2">
+        <div className={`space-y-2 ${isAppleSilicon ? 'opacity-50' : ''}`}>
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Monitor className="w-4 h-4" />
             Graphics Card
+            {isAppleSilicon && <span className="text-xs text-accent">(Integrated)</span>}
           </Label>
-          <Select value={selectedGpu.name} onValueChange={handleGpuChange}>
-            <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
-              <SelectValue />
+          <Select 
+            value={isAppleSilicon ? '' : selectedGpu.name} 
+            onValueChange={handleGpuChange}
+            disabled={isAppleSilicon}
+          >
+            <SelectTrigger className={`bg-background/50 border-border/50 transition-colors ${isAppleSilicon ? 'cursor-not-allowed' : 'hover:border-primary/50'}`}>
+              <SelectValue placeholder={isAppleSilicon ? (appleCpuOptions.find(c => c.name === selectedCpu.name)?.gpu || 'Apple GPU') : undefined} />
             </SelectTrigger>
             <SelectContent className="max-h-[300px]">
               {gpuOptions.map((gpu) => (
@@ -94,14 +135,19 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
         </div>
 
         {/* VRAM Selection */}
-        <div className="space-y-2">
+        <div className={`space-y-2 ${isAppleSilicon ? 'opacity-50' : ''}`}>
           <Label className="flex items-center gap-2 text-muted-foreground">
             <HardDrive className="w-4 h-4" />
             VRAM
+            {isAppleSilicon && <span className="text-xs text-accent">(Unified Memory)</span>}
           </Label>
-          <Select value={selectedVram.toString()} onValueChange={(v) => setSelectedVram(parseInt(v))}>
-            <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
-              <SelectValue />
+          <Select 
+            value={isAppleSilicon ? '' : selectedVram.toString()} 
+            onValueChange={(v) => setSelectedVram(parseInt(v))}
+            disabled={isAppleSilicon}
+          >
+            <SelectTrigger className={`bg-background/50 border-border/50 transition-colors ${isAppleSilicon ? 'cursor-not-allowed' : 'hover:border-primary/50'}`}>
+              <SelectValue placeholder={isAppleSilicon ? `${appleCpuOptions.find(c => c.name === selectedCpu.name)?.vram || 8} GB` : undefined} />
             </SelectTrigger>
             <SelectContent>
               {selectedGpu.vramOptions.map((vram) => (
@@ -113,7 +159,7 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           </Select>
         </div>
 
-        {/* CPU Selection with Intel/AMD Groups */}
+        {/* CPU Selection with Intel/AMD/Apple Groups */}
         <div className="space-y-2">
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Cpu className="w-4 h-4" />
@@ -125,7 +171,7 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
             </SelectTrigger>
             <SelectContent className="max-h-[300px]">
               <SelectGroup>
-                <SelectLabel className="text-primary font-semibold">Intel</SelectLabel>
+                <SelectLabel className="text-blue-400 font-semibold">Intel</SelectLabel>
                 {intelCpuOptions.map((cpu) => (
                   <SelectItem key={cpu.name} value={cpu.name}>
                     {cpu.name}
@@ -133,8 +179,18 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
                 ))}
               </SelectGroup>
               <SelectGroup>
-                <SelectLabel className="text-primary font-semibold">AMD</SelectLabel>
+                <SelectLabel className="text-red-400 font-semibold">AMD</SelectLabel>
                 {amdCpuOptions.map((cpu) => (
+                  <SelectItem key={cpu.name} value={cpu.name} className="text-foreground">
+                    {cpu.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+              <SelectGroup>
+                <SelectLabel className="text-gray-300 font-semibold flex items-center gap-1">
+                  <Apple className="w-3 h-3" /> Apple
+                </SelectLabel>
+                {appleCpuOptions.map((cpu) => (
                   <SelectItem key={cpu.name} value={cpu.name}>
                     {cpu.name}
                   </SelectItem>
@@ -185,13 +241,18 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
         </div>
 
         {/* OS Selection */}
-        <div className="space-y-2">
+        <div className={`space-y-2 ${isAppleSilicon ? 'opacity-50' : ''}`}>
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Monitor className="w-4 h-4" />
             Operating System
+            {isAppleSilicon && <span className="text-xs text-accent">(macOS only)</span>}
           </Label>
-          <Select value={selectedOs} onValueChange={(v) => setSelectedOs(v as typeof selectedOs)}>
-            <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+          <Select 
+            value={selectedOs} 
+            onValueChange={(v) => setSelectedOs(v as typeof selectedOs)}
+            disabled={isAppleSilicon}
+          >
+            <SelectTrigger className={`bg-background/50 border-border/50 transition-colors ${isAppleSilicon ? 'cursor-not-allowed' : 'hover:border-primary/50'}`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
