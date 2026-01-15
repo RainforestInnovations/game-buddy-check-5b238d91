@@ -1,7 +1,7 @@
-import { Game, PerformanceResult, calculatePerformance } from '@/data/games';
+import { Game, PerformanceResult, calculatePerformance, getGPUBenchmark, gpuBenchmarks } from '@/data/games';
 import { SystemSpecs } from './SpecSelector';
 import { motion } from 'framer-motion';
-import { Activity, Cpu, Gauge, HardDrive, Monitor, TrendingDown, TrendingUp, AlertTriangle, ExternalLink } from 'lucide-react';
+import { Activity, Cpu, Gauge, HardDrive, Monitor, TrendingDown, TrendingUp, AlertTriangle, ExternalLink, Info } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 
@@ -12,6 +12,7 @@ interface PerformanceDisplayProps {
 
 export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
   const isSupported = game.supportedOS.includes(specs.os);
+  const hasBenchmark = game.hasBenchmark !== false; // Default to true if not specified
   
   const performance = calculatePerformance(
     game,
@@ -21,6 +22,8 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
     specs.vram,
     specs.resolution
   );
+
+  const gpuBenchmark = getGPUBenchmark(specs.gpu);
 
   const getQualityColor = (quality: PerformanceResult['quality']) => {
     switch (quality) {
@@ -151,6 +154,25 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
         </div>
       </div>
 
+      {/* No Benchmark Warning */}
+      {!hasBenchmark && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6"
+        >
+          <div className="flex items-start gap-3">
+            <Info className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <h4 className="font-semibold text-foreground mb-1">Game-Specific Benchmark Unavailable</h4>
+              <p className="text-sm text-muted-foreground">
+                We don't have specific benchmark data for {game.name} yet. The estimates below are based on system requirements and general performance metrics. Below you'll also find general benchmarks for your GPU.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Performance Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {/* Average FPS */}
@@ -162,7 +184,7 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
         >
           <div className="flex items-center gap-3 mb-4">
             <Gauge className="w-6 h-6 text-primary" />
-            <span className="text-muted-foreground">Average FPS</span>
+            <span className="text-muted-foreground">Average FPS {!hasBenchmark && <span className="text-xs">(Est.)</span>}</span>
           </div>
           <div className={`text-5xl font-bold ${getFpsColor(performance.avgFps)}`}>
             {performance.avgFps}
@@ -179,7 +201,7 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
         >
           <div className="flex items-center gap-3 mb-4">
             <TrendingDown className="w-6 h-6 text-orange-400" />
-            <span className="text-muted-foreground">1% Low FPS</span>
+            <span className="text-muted-foreground">1% Low FPS {!hasBenchmark && <span className="text-xs">(Est.)</span>}</span>
           </div>
           <div className={`text-5xl font-bold ${getFpsColor(performance.lowFps)}`}>
             {performance.lowFps}
@@ -196,7 +218,7 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
         >
           <div className="flex items-center gap-3 mb-4">
             <TrendingUp className="w-6 h-6 text-green-400" />
-            <span className="text-muted-foreground">Peak FPS</span>
+            <span className="text-muted-foreground">Peak FPS {!hasBenchmark && <span className="text-xs">(Est.)</span>}</span>
           </div>
           <div className={`text-5xl font-bold ${getFpsColor(performance.highFps)}`}>
             {performance.highFps}
@@ -250,6 +272,60 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
           </div>
         </div>
       </div>
+
+      {/* GPU Benchmark Section - Show when no game-specific benchmark */}
+      {!hasBenchmark && gpuBenchmark && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-8 bg-primary/5 rounded-xl p-6 border border-primary/20"
+        >
+          <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+            <Monitor className="w-5 h-5 text-primary" />
+            {specs.gpu} General Benchmarks
+          </h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Average FPS across popular AAA titles at different resolutions (High/Ultra settings):
+          </p>
+          
+          <div className="grid grid-cols-3 gap-4">
+            <div className="bg-background/50 rounded-lg p-4 text-center">
+              <div className="text-sm text-muted-foreground mb-1">1080p</div>
+              <div className={`text-3xl font-bold ${getFpsColor(gpuBenchmark.avg1080pFps)}`}>
+                {gpuBenchmark.avg1080pFps}
+              </div>
+              <div className="text-xs text-muted-foreground">avg FPS</div>
+            </div>
+            <div className="bg-background/50 rounded-lg p-4 text-center">
+              <div className="text-sm text-muted-foreground mb-1">1440p</div>
+              <div className={`text-3xl font-bold ${getFpsColor(gpuBenchmark.avg1440pFps)}`}>
+                {gpuBenchmark.avg1440pFps}
+              </div>
+              <div className="text-xs text-muted-foreground">avg FPS</div>
+            </div>
+            <div className="bg-background/50 rounded-lg p-4 text-center">
+              <div className="text-sm text-muted-foreground mb-1">4K</div>
+              <div className={`text-3xl font-bold ${getFpsColor(gpuBenchmark.avg4kFps)}`}>
+                {gpuBenchmark.avg4kFps}
+              </div>
+              <div className="text-xs text-muted-foreground">avg FPS</div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2">
+            <div className="flex-1 bg-muted/30 rounded-full h-2">
+              <div 
+                className="bg-primary h-2 rounded-full transition-all" 
+                style={{ width: `${gpuBenchmark.benchmarkScore}%` }}
+              />
+            </div>
+            <span className="text-sm text-muted-foreground w-24">
+              Score: {gpuBenchmark.benchmarkScore}/100
+            </span>
+          </div>
+        </motion.div>
+      )}
 
       {/* Benchmark Video Placeholder */}
       <motion.div
