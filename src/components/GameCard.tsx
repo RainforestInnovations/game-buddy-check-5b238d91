@@ -29,7 +29,7 @@ export function GameCard({ game, onClick }: GameCardProps) {
             (e.target as HTMLImageElement).src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg';
           }}
         />
-        <div className="absolute inset-0 bg-background/60 group-hover:bg-background/70 transition-colors" />
+        <div className="absolute inset-0 bg-background/30 group-hover:bg-background/40 transition-colors" />
         
         {/* OS badges */}
         <div className="absolute top-2 right-2 flex gap-1">
