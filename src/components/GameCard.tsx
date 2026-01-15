@@ -1,17 +1,25 @@
 import { Game } from '@/data/games';
 import { motion } from 'framer-motion';
+import { Info } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface GameCardProps {
   game: Game;
   onClick: () => void;
+  onInfoClick?: () => void;
 }
 
-export function GameCard({ game, onClick }: GameCardProps) {
+export function GameCard({ game, onClick, onInfoClick }: GameCardProps) {
   const coverUrl = game.coverUrl 
     ? game.coverUrl
     : game.steamAppId > 0 
       ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/library_600x900.jpg`
       : 'https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png';
+
+  const handleInfoClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onInfoClick?.();
+  };
 
   return (
     <motion.div
@@ -49,6 +57,18 @@ export function GameCard({ game, onClick }: GameCardProps) {
             </span>
           )}
         </div>
+
+        {/* Info button */}
+        {onInfoClick && (
+          <Button
+            variant="secondary"
+            size="icon"
+            className="absolute top-2 left-2 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity"
+            onClick={handleInfoClick}
+          >
+            <Info className="w-4 h-4" />
+          </Button>
+        )}
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 p-4">
