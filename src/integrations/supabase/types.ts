@@ -91,7 +91,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_valid_avatar_extension: {
+        Args: { file_path: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
