@@ -9,6 +9,7 @@ import { GameReviewSection } from '@/components/GameReviewSection';
 import { UserMenu } from '@/components/UserMenu';
 import { SteamNewReleases } from '@/components/SteamNewReleases';
 import { GameDetailsModal } from '@/components/GameDetailsModal';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -58,6 +59,7 @@ const Index = () => {
       {/* Top Navigation */}
       <nav className="relative z-20 border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-end gap-3">
+          <ThemeToggle />
           <UserMenu />
           <Link to="/donate" className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-medium rounded-full transition-colors">
             <Coffee className="w-4 h-4" />
