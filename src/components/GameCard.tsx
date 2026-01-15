@@ -24,7 +24,7 @@ export function GameCard({ game, onClick }: GameCardProps) {
         <img
           src={coverUrl}
           alt={game.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
           onError={(e) => {
             (e.target as HTMLImageElement).src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg';
           }}
