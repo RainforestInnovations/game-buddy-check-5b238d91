@@ -577,8 +577,35 @@ export const amdCpuOptions = [
   { name: "AMD Ryzen 5 1600", tier: 4.8 }
 ];
 
+export const appleCpuOptions = [
+  // Apple M4 Series
+  { name: "Apple M4 Ultra", tier: 10, gpu: "M4 Ultra GPU", gpuTier: 9.2, vram: 128 },
+  { name: "Apple M4 Max", tier: 9.5, gpu: "M4 Max GPU", gpuTier: 8.5, vram: 64 },
+  { name: "Apple M4 Pro", tier: 9.0, gpu: "M4 Pro GPU", gpuTier: 7.5, vram: 24 },
+  { name: "Apple M4", tier: 8.2, gpu: "M4 GPU", gpuTier: 6.0, vram: 16 },
+  // Apple M3 Series
+  { name: "Apple M3 Ultra", tier: 9.5, gpu: "M3 Ultra GPU", gpuTier: 8.8, vram: 128 },
+  { name: "Apple M3 Max", tier: 9.0, gpu: "M3 Max GPU", gpuTier: 8.0, vram: 48 },
+  { name: "Apple M3 Pro", tier: 8.5, gpu: "M3 Pro GPU", gpuTier: 7.0, vram: 18 },
+  { name: "Apple M3", tier: 7.8, gpu: "M3 GPU", gpuTier: 5.5, vram: 8 },
+  // Apple M2 Series
+  { name: "Apple M2 Ultra", tier: 9.0, gpu: "M2 Ultra GPU", gpuTier: 8.2, vram: 76 },
+  { name: "Apple M2 Max", tier: 8.5, gpu: "M2 Max GPU", gpuTier: 7.5, vram: 38 },
+  { name: "Apple M2 Pro", tier: 8.0, gpu: "M2 Pro GPU", gpuTier: 6.5, vram: 16 },
+  { name: "Apple M2", tier: 7.2, gpu: "M2 GPU", gpuTier: 5.0, vram: 8 },
+  // Apple M1 Series
+  { name: "Apple M1 Ultra", tier: 8.5, gpu: "M1 Ultra GPU", gpuTier: 7.8, vram: 64 },
+  { name: "Apple M1 Max", tier: 8.0, gpu: "M1 Max GPU", gpuTier: 7.0, vram: 32 },
+  { name: "Apple M1 Pro", tier: 7.5, gpu: "M1 Pro GPU", gpuTier: 6.0, vram: 16 },
+  { name: "Apple M1", tier: 6.8, gpu: "M1 GPU", gpuTier: 4.5, vram: 8 },
+  // Intel Macs
+  { name: "Intel Core i9 (Mac)", tier: 7.0, gpu: "AMD Radeon Pro 5600M", gpuTier: 5.5, vram: 8 },
+  { name: "Intel Core i7 (Mac)", tier: 6.2, gpu: "AMD Radeon Pro 5500M", gpuTier: 4.8, vram: 8 },
+  { name: "Intel Core i5 (Mac)", tier: 5.5, gpu: "Intel Iris Plus", gpuTier: 2.5, vram: 4 }
+];
+
 // Combined for backward compatibility
-export const cpuOptions = [...intelCpuOptions, ...amdCpuOptions];
+export const cpuOptions = [...intelCpuOptions, ...amdCpuOptions, ...appleCpuOptions];
 
 export const ramOptions = [4, 8, 12, 16, 24, 32, 48, 64, 128];
 
