@@ -20,7 +20,8 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
     specs.cpuTier,
     specs.ram,
     specs.vram,
-    specs.resolution
+    specs.resolution,
+    specs.quality
   );
 
   const gpuBenchmark = getGPUBenchmark(specs.gpu);
@@ -359,6 +360,9 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full uppercase">
             {specs.resolution}
+          </span>
+          <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full capitalize">
+            {specs.quality} Quality
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full capitalize">
             {specs.os}

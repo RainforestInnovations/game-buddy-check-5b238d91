@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { gpuOptions, nvidiaGpuOptions, amdGpuOptions, intelGpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
+import { gpuOptions, nvidiaGpuOptions, amdGpuOptions, intelGpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions, qualityOptions, QualityPreset } from '@/data/games';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { motion } from 'framer-motion';
-import { Cpu, HardDrive, Monitor, Settings2, Maximize, Apple } from 'lucide-react';
+import { Cpu, HardDrive, Monitor, Settings2, Maximize, Apple, Sliders } from 'lucide-react';
 
 export interface SystemSpecs {
   gpu: string;
@@ -15,6 +15,7 @@ export interface SystemSpecs {
   ram: number;
   os: 'windows' | 'macos' | 'linux';
   resolution: '1080p' | '1440p' | '4k';
+  quality: QualityPreset;
 }
 
 interface SpecSelectorProps {
@@ -28,6 +29,7 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
   const [selectedRam, setSelectedRam] = useState(16);
   const [selectedOs, setSelectedOs] = useState<'windows' | 'macos' | 'linux'>('windows');
   const [selectedResolution, setSelectedResolution] = useState<'1080p' | '1440p' | '4k'>('1080p');
+  const [selectedQuality, setSelectedQuality] = useState<QualityPreset>('high');
   const [isAppleSilicon, setIsAppleSilicon] = useState(false);
 
   // Check if current CPU is Apple Silicon
@@ -47,7 +49,8 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           cpuTier: selectedCpu.tier,
           ram: selectedRam,
           os: 'macos',
-          resolution: selectedResolution
+          resolution: selectedResolution,
+          quality: selectedQuality
         });
       }
     } else {
@@ -59,10 +62,11 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
         cpuTier: selectedCpu.tier,
         ram: selectedRam,
         os: selectedOs,
-        resolution: selectedResolution
+        resolution: selectedResolution,
+        quality: selectedQuality
       });
     }
-  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, selectedResolution, isAppleSilicon, onSpecsChange]);
+  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, selectedResolution, selectedQuality, isAppleSilicon, onSpecsChange]);
 
   const handleGpuChange = (gpuName: string) => {
     const gpu = gpuOptions.find(g => g.name === gpuName);
@@ -330,6 +334,46 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
               ))}
             </SelectContent>
           </Select>
+        </div>
+
+        {/* Quality Selection */}
+        <div className="space-y-2">
+          <Label className="flex items-center gap-2 text-muted-foreground">
+            <Sliders className="w-4 h-4" />
+            Graphics Quality
+          </Label>
+          <Tabs 
+            value={selectedQuality} 
+            onValueChange={(v) => setSelectedQuality(v as QualityPreset)}
+            className="w-full"
+          >
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger 
+                value="low" 
+                className="text-xs data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400"
+              >
+                Low
+              </TabsTrigger>
+              <TabsTrigger 
+                value="medium" 
+                className="text-xs data-[state=active]:bg-yellow-500/20 data-[state=active]:text-yellow-400"
+              >
+                Medium
+              </TabsTrigger>
+              <TabsTrigger 
+                value="high" 
+                className="text-xs data-[state=active]:bg-emerald-500/20 data-[state=active]:text-emerald-400"
+              >
+                High
+              </TabsTrigger>
+              <TabsTrigger 
+                value="ultra" 
+                className="text-xs data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400"
+              >
+                Ultra
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
 
         {/* OS Selection */}
