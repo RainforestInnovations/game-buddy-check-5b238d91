@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { User as UserIcon, LogOut, Settings } from 'lucide-react';
+import { User as UserIcon, LogOut, Settings, MessageSquare } from 'lucide-react';
 
 export function UserMenu() {
   const [user, setUser] = useState<User | null>(null);
@@ -64,6 +64,12 @@ export function UserMenu() {
           <Link to="/account" className="flex items-center gap-2 cursor-pointer">
             <Settings className="w-4 h-4" />
             Account Settings
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link to="/feedback" className="flex items-center gap-2 cursor-pointer">
+            <MessageSquare className="w-4 h-4" />
+            Feedback
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
