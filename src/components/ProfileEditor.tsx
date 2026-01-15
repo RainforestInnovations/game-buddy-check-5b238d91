@@ -53,11 +53,26 @@ export default function ProfileEditor({ user }: ProfileEditorProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
+    // Whitelist specific safe image formats (excluding SVG to prevent XSS)
+    const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+    const ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+    // Validate MIME type
+    if (!ALLOWED_MIME_TYPES.includes(file.type)) {
       toast({
         title: 'Invalid file type',
-        description: 'Please select an image file.',
+        description: 'Only JPG, PNG, WebP, and GIF images are allowed.',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    // Validate file extension
+    const fileExt = file.name.split('.').pop()?.toLowerCase();
+    if (!fileExt || !ALLOWED_EXTENSIONS.includes(fileExt)) {
+      toast({
+        title: 'Invalid file extension',
+        description: 'Only .jpg, .jpeg, .png, .webp, and .gif files are allowed.',
         variant: 'destructive'
       });
       return;
@@ -76,7 +91,6 @@ export default function ProfileEditor({ user }: ProfileEditorProps) {
     setIsUploading(true);
 
     try {
-      const fileExt = file.name.split('.').pop();
       const filePath = `${user.id}/${Date.now()}.${fileExt}`;
 
       // Upload to storage
@@ -188,7 +202,7 @@ export default function ProfileEditor({ user }: ProfileEditorProps) {
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/*"
+          accept=".jpg,.jpeg,.png,.webp,.gif"
           className="hidden"
           onChange={handleFileChange}
         />
