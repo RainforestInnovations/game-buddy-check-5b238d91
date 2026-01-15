@@ -18,7 +18,8 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
     specs.gpuTier,
     specs.cpuTier,
     specs.ram,
-    specs.vram
+    specs.vram,
+    specs.resolution
   );
 
   const getQualityColor = (quality: PerformanceResult['quality']) => {
@@ -279,6 +280,9 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
             {specs.ram}GB RAM
+          </span>
+          <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full uppercase">
+            {specs.resolution}
           </span>
           <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full capitalize">
             {specs.os}

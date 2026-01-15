@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { gpuOptions, cpuOptions, ramOptions, osOptions } from '@/data/games';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { gpuOptions, intelCpuOptions, amdCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { motion } from 'framer-motion';
-import { Cpu, HardDrive, Monitor, Settings2 } from 'lucide-react';
+import { Cpu, HardDrive, Monitor, Settings2, Maximize } from 'lucide-react';
 
 export interface SystemSpecs {
   gpu: string;
@@ -13,6 +13,7 @@ export interface SystemSpecs {
   cpuTier: number;
   ram: number;
   os: 'windows' | 'macos' | 'linux';
+  resolution: '1080p' | '1440p' | '4k';
 }
 
 interface SpecSelectorProps {
@@ -22,9 +23,10 @@ interface SpecSelectorProps {
 export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
   const [selectedGpu, setSelectedGpu] = useState(gpuOptions[0]);
   const [selectedVram, setSelectedVram] = useState(gpuOptions[0].vramOptions[0]);
-  const [selectedCpu, setSelectedCpu] = useState(cpuOptions[0]);
+  const [selectedCpu, setSelectedCpu] = useState(intelCpuOptions[0]);
   const [selectedRam, setSelectedRam] = useState(16);
   const [selectedOs, setSelectedOs] = useState<'windows' | 'macos' | 'linux'>('windows');
+  const [selectedResolution, setSelectedResolution] = useState<'1080p' | '1440p' | '4k'>('1080p');
 
   useEffect(() => {
     onSpecsChange({
@@ -34,15 +36,28 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
       cpu: selectedCpu.name,
       cpuTier: selectedCpu.tier,
       ram: selectedRam,
-      os: selectedOs
+      os: selectedOs,
+      resolution: selectedResolution
     });
-  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, onSpecsChange]);
+  }, [selectedGpu, selectedVram, selectedCpu, selectedRam, selectedOs, selectedResolution, onSpecsChange]);
 
   const handleGpuChange = (gpuName: string) => {
     const gpu = gpuOptions.find(g => g.name === gpuName);
     if (gpu) {
       setSelectedGpu(gpu);
       setSelectedVram(gpu.vramOptions[0]);
+    }
+  };
+
+  const handleCpuChange = (cpuName: string) => {
+    const intelCpu = intelCpuOptions.find(c => c.name === cpuName);
+    if (intelCpu) {
+      setSelectedCpu(intelCpu);
+      return;
+    }
+    const amdCpu = amdCpuOptions.find(c => c.name === cpuName);
+    if (amdCpu) {
+      setSelectedCpu(amdCpu);
     }
   };
 
@@ -98,28 +113,33 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           </Select>
         </div>
 
-        {/* CPU Selection */}
+        {/* CPU Selection with Intel/AMD Groups */}
         <div className="space-y-2">
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Cpu className="w-4 h-4" />
             Processor
           </Label>
-          <Select 
-            value={selectedCpu.name} 
-            onValueChange={(name) => {
-              const cpu = cpuOptions.find(c => c.name === name);
-              if (cpu) setSelectedCpu(cpu);
-            }}
-          >
+          <Select value={selectedCpu.name} onValueChange={handleCpuChange}>
             <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="max-h-[300px]">
-              {cpuOptions.map((cpu) => (
-                <SelectItem key={cpu.name} value={cpu.name}>
-                  {cpu.name}
-                </SelectItem>
-              ))}
+              <SelectGroup>
+                <SelectLabel className="text-primary font-semibold">Intel</SelectLabel>
+                {intelCpuOptions.map((cpu) => (
+                  <SelectItem key={cpu.name} value={cpu.name}>
+                    {cpu.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+              <SelectGroup>
+                <SelectLabel className="text-primary font-semibold">AMD</SelectLabel>
+                {amdCpuOptions.map((cpu) => (
+                  <SelectItem key={cpu.name} value={cpu.name}>
+                    {cpu.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
         </div>
@@ -138,6 +158,26 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
               {ramOptions.map((ram) => (
                 <SelectItem key={ram} value={ram.toString()}>
                   {ram} GB
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Resolution Selection */}
+        <div className="space-y-2">
+          <Label className="flex items-center gap-2 text-muted-foreground">
+            <Maximize className="w-4 h-4" />
+            Resolution
+          </Label>
+          <Select value={selectedResolution} onValueChange={(v) => setSelectedResolution(v as typeof selectedResolution)}>
+            <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {resolutionOptions.map((res) => (
+                <SelectItem key={res.value} value={res.value}>
+                  {res.label}
                 </SelectItem>
               ))}
             </SelectContent>
