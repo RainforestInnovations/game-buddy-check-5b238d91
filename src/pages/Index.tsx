@@ -138,7 +138,7 @@ const Index = () => {
               
               {/* Reviews Section */}
               <div className="mt-8">
-                <GameReviewSection gameId={selectedGame.id} gameName={selectedGame.name} />
+                <GameReviewSection gameId={selectedGame.id} gameName={selectedGame.name} currentSpecs={specs} />
               </div>
             </motion.div>}
         </AnimatePresence>
