@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { gpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
+import { gpuOptions, nvidiaGpuOptions, amdGpuOptions, intelGpuOptions, intelCpuOptions, amdCpuOptions, appleCpuOptions, ramOptions, osOptions, resolutionOptions } from '@/data/games';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
@@ -22,8 +22,8 @@ interface SpecSelectorProps {
 }
 
 export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
-  const [selectedGpu, setSelectedGpu] = useState(gpuOptions[0]);
-  const [selectedVram, setSelectedVram] = useState(gpuOptions[0].vramOptions[0]);
+  const [selectedGpu, setSelectedGpu] = useState(nvidiaGpuOptions[0]);
+  const [selectedVram, setSelectedVram] = useState(nvidiaGpuOptions[0].vramOptions[0]);
   const [selectedCpu, setSelectedCpu] = useState(intelCpuOptions[0]);
   const [selectedRam, setSelectedRam] = useState(16);
   const [selectedOs, setSelectedOs] = useState<'windows' | 'macos' | 'linux'>('windows');
@@ -110,29 +110,86 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* GPU Selection */}
-        <div className={`space-y-2 ${isAppleSilicon ? 'opacity-50' : ''}`}>
+        {/* GPU Selection with NVIDIA/AMD/Intel Tabs */}
+        <div className={`space-y-2 md:col-span-2 lg:col-span-3 ${isAppleSilicon ? 'opacity-50' : ''}`}>
           <Label className="flex items-center gap-2 text-muted-foreground">
             <Monitor className="w-4 h-4" />
             Graphics Card
             {isAppleSilicon && <span className="text-xs text-accent">(Integrated)</span>}
           </Label>
-          <Select 
-            value={isAppleSilicon ? '' : selectedGpu.name} 
-            onValueChange={handleGpuChange}
-            disabled={isAppleSilicon}
-          >
-            <SelectTrigger className={`bg-background/50 border-border/50 transition-colors ${isAppleSilicon ? 'cursor-not-allowed' : 'hover:border-primary/50'}`}>
-              <SelectValue placeholder={isAppleSilicon ? (appleCpuOptions.find(c => c.name === selectedCpu.name)?.gpu || 'Apple GPU') : undefined} />
-            </SelectTrigger>
-            <SelectContent className="max-h-[300px]">
-              {gpuOptions.map((gpu) => (
-                <SelectItem key={gpu.name} value={gpu.name}>
-                  {gpu.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          {isAppleSilicon ? (
+            <div className="bg-background/50 border border-border/50 rounded-md px-3 py-2 text-muted-foreground cursor-not-allowed">
+              {appleCpuOptions.find(c => c.name === selectedCpu.name)?.gpu || 'Apple GPU'}
+            </div>
+          ) : (
+            <Tabs 
+              defaultValue="nvidia" 
+              className="w-full"
+              onValueChange={(tab) => {
+                if (tab === 'nvidia') {
+                  handleGpuChange(nvidiaGpuOptions[0].name);
+                } else if (tab === 'amd') {
+                  handleGpuChange(amdGpuOptions[0].name);
+                } else if (tab === 'intel') {
+                  handleGpuChange(intelGpuOptions[0].name);
+                }
+              }}
+            >
+              <TabsList className="grid w-full grid-cols-3 mb-3">
+                <TabsTrigger value="nvidia" className="text-green-400 data-[state=active]:text-green-400 data-[state=active]:bg-green-400/20">
+                  NVIDIA
+                </TabsTrigger>
+                <TabsTrigger value="amd" className="text-red-400 data-[state=active]:text-red-400 data-[state=active]:bg-red-400/20">
+                  AMD
+                </TabsTrigger>
+                <TabsTrigger value="intel" className="text-blue-400 data-[state=active]:text-blue-400 data-[state=active]:bg-blue-400/20">
+                  Intel
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="nvidia">
+                <Select value={selectedGpu.name} onValueChange={handleGpuChange}>
+                  <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                    <SelectValue placeholder="Select NVIDIA GPU" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {nvidiaGpuOptions.map((gpu) => (
+                      <SelectItem key={gpu.name} value={gpu.name}>
+                        {gpu.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </TabsContent>
+              <TabsContent value="amd">
+                <Select value={selectedGpu.name} onValueChange={handleGpuChange}>
+                  <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                    <SelectValue placeholder="Select AMD GPU" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {amdGpuOptions.map((gpu) => (
+                      <SelectItem key={gpu.name} value={gpu.name}>
+                        {gpu.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </TabsContent>
+              <TabsContent value="intel">
+                <Select value={selectedGpu.name} onValueChange={handleGpuChange}>
+                  <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
+                    <SelectValue placeholder="Select Intel GPU" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {intelGpuOptions.map((gpu) => (
+                      <SelectItem key={gpu.name} value={gpu.name}>
+                        {gpu.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </TabsContent>
+            </Tabs>
+          )}
         </div>
 
         {/* VRAM Selection */}
