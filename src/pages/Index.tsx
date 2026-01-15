@@ -49,6 +49,16 @@ const Index = () => {
     setDisplayCount(prev => prev + GAMES_PER_PAGE);
   };
   return <div className="min-h-screen bg-background">
+      {/* Top Navigation */}
+      <nav className="relative z-20 border-b border-border/50">
+        <div className="container mx-auto px-4 py-4 flex justify-end">
+          <Link to="/donate" className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-medium rounded-full transition-colors">
+            <Coffee className="w-4 h-4" />
+            Buy me a coffee
+          </Link>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         {/* Animated background */}
