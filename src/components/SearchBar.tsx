@@ -80,9 +80,11 @@ export function SearchBar({ onGameSelect }: SearchBarProps) {
             className="absolute top-full mt-2 w-full bg-card/95 backdrop-blur-xl border border-border/50 rounded-2xl overflow-hidden shadow-2xl z-50"
           >
             {results.map((game, index) => {
-              const coverUrl = game.steamAppId > 0 
-                ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/capsule_sm_120.jpg`
-                : null;
+              const coverUrl = game.coverUrl 
+                ? game.coverUrl
+                : game.steamAppId > 0 
+                  ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/capsule_sm_120.jpg`
+                  : null;
 
               return (
                 <motion.button

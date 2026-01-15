@@ -39,9 +39,11 @@ export function PerformanceDisplay({ game, specs }: PerformanceDisplayProps) {
     return 'text-red-400';
   };
 
-  const coverUrl = game.steamAppId > 0 
-    ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/header.jpg`
-    : `https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg`;
+  const coverUrl = game.coverUrl 
+    ? game.coverUrl
+    : game.steamAppId > 0 
+      ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/header.jpg`
+      : 'https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png';
 
   if (!isSupported) {
     return (
