@@ -1,11 +1,12 @@
 import { useState, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { games, Game } from '@/data/games';
 import { GameCard } from '@/components/GameCard';
 import { SearchBar } from '@/components/SearchBar';
 import { SpecSelector, SystemSpecs } from '@/components/SpecSelector';
 import { PerformanceDisplay } from '@/components/PerformanceDisplay';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, ChevronDown, X, Sparkles } from 'lucide-react';
+import { Gamepad2, ChevronDown, X, Sparkles, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 const GAMES_PER_PAGE = 24;
 const Index = () => {
@@ -182,8 +183,12 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p className="text-sm">
+        <div className="container mx-auto px-4 text-center">
+          <Link to="/donate" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-4">
+            <Coffee className="w-4 h-4" />
+            <span className="font-medium">Support this project - Buy me a coffee!</span>
+          </Link>
+          <p className="text-sm text-muted-foreground">
             Performance estimates are approximations based on hardware specifications.
             Actual performance may vary based on drivers, settings, and other factors.
           </p>
