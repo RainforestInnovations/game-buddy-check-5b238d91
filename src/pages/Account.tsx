@@ -7,8 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
-import { ArrowLeft, User as UserIcon, Mail, Lock, LogOut, Trash2 } from 'lucide-react';
+import { ArrowLeft, User as UserIcon, Mail, Lock, LogOut } from 'lucide-react';
 import { z } from 'zod';
+import ProfileEditor from '@/components/ProfileEditor';
 
 const passwordSchema = z.object({
   password: z.string().min(6, 'Password must be at least 6 characters').max(100)
@@ -160,6 +161,15 @@ export default function Account() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Profile Settings */}
+          <div className="glass-card p-8 rounded-2xl mb-6">
+            <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+              <UserIcon className="w-5 h-5" />
+              Profile Settings
+            </h2>
+            <ProfileEditor user={user} />
           </div>
 
           {/* Change Password */}
