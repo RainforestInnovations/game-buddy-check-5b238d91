@@ -7,9 +7,11 @@ interface GameCardProps {
 }
 
 export function GameCard({ game, onClick }: GameCardProps) {
-  const coverUrl = game.steamAppId > 0 
-    ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/library_600x900.jpg`
-    : `https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg`; // Fallback
+  const coverUrl = game.coverUrl 
+    ? game.coverUrl
+    : game.steamAppId > 0 
+      ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/library_600x900.jpg`
+      : 'https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png';
 
   return (
     <motion.div
