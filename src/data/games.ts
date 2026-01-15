@@ -396,7 +396,8 @@ export const resolutionOptions = [
   { value: '4k', label: '4K (3840x2160)', multiplier: 0.4 }
 ] as const;
 
-export const gpuOptions = [
+// NVIDIA GPU options
+export const nvidiaGpuOptions = [
   // NVIDIA RTX 50 Series
   { name: "RTX 5090", tier: 10, vramOptions: [32] },
   { name: "RTX 5080", tier: 9.7, vramOptions: [16] },
@@ -449,6 +450,10 @@ export const gpuOptions = [
   { name: "GTX 970", tier: 3.8, vramOptions: [4] },
   { name: "GTX 960", tier: 3, vramOptions: [2, 4] },
   { name: "GTX 950", tier: 2.8, vramOptions: [2] },
+];
+
+// AMD GPU options
+export const amdGpuOptions = [
   // AMD RX 9000 Series
   { name: "RX 9070 XT", tier: 9.3, vramOptions: [16] },
   { name: "RX 9070", tier: 8.8, vramOptions: [16] },
@@ -477,13 +482,19 @@ export const gpuOptions = [
   { name: "RX 5600 XT", tier: 5.2, vramOptions: [6] },
   { name: "RX 580", tier: 4.2, vramOptions: [4, 8] },
   { name: "RX 570", tier: 3.8, vramOptions: [4, 8] },
-  // Intel Arc
+];
+
+// Intel GPU options
+export const intelGpuOptions = [
   { name: "Intel Arc B580", tier: 6.5, vramOptions: [12] },
   { name: "Intel Arc A770", tier: 6.5, vramOptions: [16] },
   { name: "Intel Arc A750", tier: 6, vramOptions: [8] },
   { name: "Intel Arc A580", tier: 5.2, vramOptions: [8] },
-  { name: "Intel Arc A380", tier: 3.2, vramOptions: [6] }
+  { name: "Intel Arc A380", tier: 3.2, vramOptions: [6] },
 ];
+
+// Combined for backward compatibility
+export const gpuOptions = [...nvidiaGpuOptions, ...amdGpuOptions, ...intelGpuOptions];
 
 export const intelCpuOptions = [
   // Intel Core Ultra 200 Series
