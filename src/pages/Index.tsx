@@ -11,7 +11,7 @@ import { SteamNewReleases } from '@/components/SteamNewReleases';
 import { GameDetailsModal } from '@/components/GameDetailsModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame } from 'lucide-react';
+import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const GAMES_PER_PAGE = 24;
@@ -61,6 +61,10 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4 flex justify-end gap-3">
           <ThemeToggle />
           <UserMenu />
+          <Link to="/feedback" className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-full transition-colors">
+            <MessageSquare className="w-4 h-4" />
+            Feedback
+          </Link>
           <Link to="/donate" className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-medium rounded-full transition-colors">
             <Coffee className="w-4 h-4" />
             Support Me
@@ -238,10 +242,16 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
         <div className="container mx-auto px-4 text-center">
-          <Link to="/donate" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-4">
-            <Coffee className="w-4 h-4" />
-            <span className="font-medium">Support this project - Buy me a coffee!</span>
-          </Link>
+          <div className="flex justify-center gap-6 mb-4">
+            <Link to="/feedback" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+              <MessageSquare className="w-4 h-4" />
+              <span className="font-medium">Send Feedback</span>
+            </Link>
+            <Link to="/donate" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+              <Coffee className="w-4 h-4" />
+              <span className="font-medium">Support this project</span>
+            </Link>
+          </div>
           <p className="text-sm text-muted-foreground">
             Performance estimates are approximations based on hardware specifications.
             Actual performance may vary based on drivers, settings, and other factors.
