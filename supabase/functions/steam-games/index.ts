@@ -18,13 +18,41 @@ interface SteamGame {
   screenshots: string[];
 }
 
+// Validate type parameter
+const ALLOWED_TYPES = ['new_releases', 'game_details', 'search'] as const;
+type RequestType = typeof ALLOWED_TYPES[number];
+
+function isValidType(type: unknown): type is RequestType {
+  return typeof type === 'string' && ALLOWED_TYPES.includes(type as RequestType);
+}
+
+// Validate appid is a positive integer
+function isValidAppId(appid: unknown): boolean {
+  const num = Number(appid);
+  return Number.isInteger(num) && num > 0 && num <= 999999999;
+}
+
+// Validate search query
+function isValidQuery(query: unknown): boolean {
+  return typeof query === 'string' && query.length > 0 && query.length <= 100;
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { type } = await req.json();
+    const body = await req.json();
+    const { type } = body;
+
+    // Validate type parameter
+    if (!isValidType(type)) {
+      return new Response(JSON.stringify({ error: 'Invalid type parameter' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     if (type === 'new_releases') {
       // Fetch new releases from Steam's featured endpoint
@@ -72,10 +100,11 @@ serve(async (req) => {
     }
 
     if (type === 'game_details') {
-      const { appid } = await req.json();
+      const { appid } = body;
       
-      if (!appid) {
-        return new Response(JSON.stringify({ error: 'appid required' }), {
+      // Validate appid is a positive integer
+      if (!isValidAppId(appid)) {
+        return new Response(JSON.stringify({ error: 'Invalid appid: must be a positive integer' }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
@@ -119,7 +148,16 @@ serve(async (req) => {
     }
 
     if (type === 'search') {
-      const { query } = await req.json();
+      const { query } = body;
+      
+      // Validate search query
+      if (!isValidQuery(query)) {
+        return new Response(JSON.stringify({ error: 'Invalid query: must be 1-100 characters' }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      
       // Search Steam store
       const searchResponse = await fetch(
         `https://store.steampowered.com/api/storesearch/?term=${encodeURIComponent(query)}&cc=us&l=en`
