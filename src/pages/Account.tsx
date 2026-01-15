@@ -7,7 +7,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
-import { ArrowLeft, User as UserIcon, Mail, Lock, LogOut } from 'lucide-react';
+import { ArrowLeft, User as UserIcon, Mail, Lock, LogOut, Trash2 } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { z } from 'zod';
 import ProfileEditor from '@/components/ProfileEditor';
 
@@ -23,6 +34,7 @@ export default function Account() {
   const [isLoading, setIsLoading] = useState(true);
   const [newPassword, setNewPassword] = useState('');
   const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
 
   useEffect(() => {
     // Set up auth state listener FIRST
@@ -89,6 +101,57 @@ export default function Account() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     navigate('/');
+  };
+
+  const handleDeleteAccount = async () => {
+    setIsDeletingAccount(true);
+    
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        toast({
+          title: "Error",
+          description: "You must be logged in to delete your account.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/delete-account`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to delete account');
+      }
+
+      await supabase.auth.signOut();
+      
+      toast({
+        title: "Account deleted",
+        description: "Your account has been permanently deleted."
+      });
+      
+      navigate('/');
+    } catch (error: any) {
+      toast({
+        title: "Deletion failed",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setIsDeletingAccount(false);
+    }
   };
 
   if (isLoading) {
@@ -202,7 +265,7 @@ export default function Account() {
           </div>
 
           {/* Actions */}
-          <div className="glass-card p-8 rounded-2xl">
+          <div className="glass-card p-8 rounded-2xl mb-6">
             <h2 className="text-xl font-semibold text-foreground mb-4">Account Actions</h2>
             
             <div className="space-y-3">
@@ -215,6 +278,42 @@ export default function Account() {
                 Sign Out
               </Button>
             </div>
+          </div>
+
+          {/* Danger Zone */}
+          <div className="glass-card p-8 rounded-2xl border border-destructive/20">
+            <h2 className="text-xl font-semibold text-destructive mb-2">Danger Zone</h2>
+            <p className="text-muted-foreground text-sm mb-4">
+              Permanently delete your account and all associated data. This action cannot be undone.
+            </p>
+            
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive" className="gap-2">
+                  <Trash2 className="w-4 h-4" />
+                  Delete Account
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete your account,
+                    profile, reviews, and remove all your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={handleDeleteAccount}
+                    disabled={isDeletingAccount}
+                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  >
+                    {isDeletingAccount ? 'Deleting...' : 'Yes, delete my account'}
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </motion.div>
       </div>
