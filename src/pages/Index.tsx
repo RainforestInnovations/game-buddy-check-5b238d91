@@ -179,32 +179,15 @@ const Index = () => {
               </div>
               
               <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                <button 
-                  onClick={() => setActiveGenre(null)} 
-                  className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
-                    activeGenre === null 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
-                  }`}
-                >
+                <button onClick={() => setActiveGenre(null)} className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === null ? 'bg-primary text-primary-foreground' : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
                   All Games
                 </button>
-                {genres.map(genre => (
-                  <button 
-                    key={genre}
-                    onClick={() => {
-                      setActiveGenre(activeGenre === genre ? null : genre);
-                      setDisplayCount(GAMES_PER_PAGE);
-                    }}
-                    className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
-                      activeGenre === genre 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
-                    }`}
-                  >
+                {genres.map(genre => <button key={genre} onClick={() => {
+                setActiveGenre(activeGenre === genre ? null : genre);
+                setDisplayCount(GAMES_PER_PAGE);
+              }} className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === genre ? 'bg-primary text-primary-foreground' : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
                     {genre}
-                  </button>
-                ))}
+                  </button>)}
               </div>
             </div>
 
