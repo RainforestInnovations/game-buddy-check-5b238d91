@@ -228,9 +228,11 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
             Processor
           </Label>
           <Tabs 
+            value={isAppleSilicon ? 'apple' : undefined}
             defaultValue="intel" 
             className="w-full"
             onValueChange={(tab) => {
+              if (isAppleSilicon) return; // Prevent tab change when locked to Apple
               if (tab === 'intel') {
                 handleCpuChange(intelCpuOptions[0].name);
               } else if (tab === 'amd') {
@@ -241,10 +243,18 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
             }}
           >
             <TabsList className="grid w-full grid-cols-3 mb-3">
-              <TabsTrigger value="intel" className="text-blue-400 data-[state=active]:text-blue-400 data-[state=active]:bg-blue-400/20">
+              <TabsTrigger 
+                value="intel" 
+                className={`text-blue-400 data-[state=active]:text-blue-400 data-[state=active]:bg-blue-400/20 ${isAppleSilicon ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={isAppleSilicon}
+              >
                 Intel
               </TabsTrigger>
-              <TabsTrigger value="amd" className="text-red-400 data-[state=active]:text-red-400 data-[state=active]:bg-red-400/20">
+              <TabsTrigger 
+                value="amd" 
+                className={`text-red-400 data-[state=active]:text-red-400 data-[state=active]:bg-red-400/20 ${isAppleSilicon ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={isAppleSilicon}
+              >
                 AMD
               </TabsTrigger>
               <TabsTrigger value="apple" className="data-[state=active]:bg-muted flex items-center gap-1">
