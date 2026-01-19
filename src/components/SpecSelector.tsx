@@ -385,7 +385,14 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           </Label>
           <Select 
             value={selectedOs} 
-            onValueChange={(v) => setSelectedOs(v as typeof selectedOs)}
+            onValueChange={(v) => {
+              const newOs = v as typeof selectedOs;
+              setSelectedOs(newOs);
+              if (newOs === 'macos') {
+                setIsAppleSilicon(true);
+                setSelectedCpu(appleCpuOptions[0]);
+              }
+            }}
             disabled={isAppleSilicon}
           >
             <SelectTrigger className={`bg-background/50 border-border/50 transition-colors ${isAppleSilicon ? 'cursor-not-allowed' : 'hover:border-primary/50'}`}>
