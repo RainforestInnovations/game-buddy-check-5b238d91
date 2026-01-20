@@ -1,35 +1,33 @@
-import { useState, useCallback, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { useTheme } from 'next-themes';
-import { games, Game } from '@/data/games';
-import { GameCard } from '@/components/GameCard';
-import { SearchBar } from '@/components/SearchBar';
-import { SpecSelector, SystemSpecs } from '@/components/SpecSelector';
-import { PerformanceDisplay } from '@/components/PerformanceDisplay';
-import { GameReviewSection } from '@/components/GameReviewSection';
-import { UserMenu } from '@/components/UserMenu';
-import { SteamNewReleases } from '@/components/SteamNewReleases';
-import { GameDetailsModal } from '@/components/GameDetailsModal';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare, ShoppingCart } from 'lucide-react';
-import { ProductRecommendations } from '@/components/ProductRecommendations';
-import logoLight from '@/assets/logo.png';
-import logoDark from '@/assets/logo-dark.png';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useState, useCallback, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useTheme } from "next-themes";
+import { games, Game } from "@/data/games";
+import { GameCard } from "@/components/GameCard";
+import { SearchBar } from "@/components/SearchBar";
+import { SpecSelector, SystemSpecs } from "@/components/SpecSelector";
+import { PerformanceDisplay } from "@/components/PerformanceDisplay";
+import { GameReviewSection } from "@/components/GameReviewSection";
+import { UserMenu } from "@/components/UserMenu";
+import { SteamNewReleases } from "@/components/SteamNewReleases";
+import { GameDetailsModal } from "@/components/GameDetailsModal";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
+import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare, ShoppingCart } from "lucide-react";
+import { ProductRecommendations } from "@/components/ProductRecommendations";
+import logoLight from "@/assets/logo.png";
+import logoDark from "@/assets/logo-dark.png";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const GAMES_PER_PAGE = 24;
 const Index = () => {
-  const {
-    resolvedTheme
-  } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [detailsGame, setDetailsGame] = useState<Game | null>(null);
   const [specs, setSpecs] = useState<SystemSpecs | null>(null);
   const [displayCount, setDisplayCount] = useState(GAMES_PER_PAGE);
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
   const genres = useMemo(() => {
-    const allGenres = games.flatMap(g => g.genre);
+    const allGenres = games.flatMap((g) => g.genre);
     return [...new Set(allGenres)].sort();
   }, []);
   const filteredGames = useMemo(() => {
@@ -37,12 +35,12 @@ const Index = () => {
 
     // Filter by OS if specs are selected
     if (specs?.os) {
-      filtered = filtered.filter(g => g.supportedOS.includes(specs.os));
+      filtered = filtered.filter((g) => g.supportedOS.includes(specs.os));
     }
 
     // Filter by genre
     if (activeGenre) {
-      filtered = filtered.filter(g => g.genre.includes(activeGenre));
+      filtered = filtered.filter((g) => g.genre.includes(activeGenre));
     }
     return filtered;
   }, [activeGenre, specs?.os]);
@@ -56,23 +54,30 @@ const Index = () => {
     setSelectedGame(game);
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
   const loadMore = () => {
-    setDisplayCount(prev => prev + GAMES_PER_PAGE);
+    setDisplayCount((prev) => prev + GAMES_PER_PAGE);
   };
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       {/* Top Navigation */}
       <nav className="relative z-20 border-b border-border/50">
         <div className="container mx-auto px-4 py-4 flex justify-end gap-3">
           <ThemeToggle />
           <UserMenu />
-          <Link to="/feedback" className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-full transition-colors">
+          <Link
+            to="/feedback"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-full transition-colors"
+          >
             <MessageSquare className="w-4 h-4" />
             Feedback
           </Link>
-          <Link to="/donate" className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-medium rounded-full transition-colors">
+          <Link
+            to="/donate"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFDD00] hover:bg-[#FFDD00]/90 text-black font-medium rounded-full transition-colors"
+          >
             <Coffee className="w-4 h-4" />
             Support Me
           </Link>
@@ -88,38 +93,59 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto relative z-10">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.6
-        }} className="text-center mb-12">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.6,
+            }}
+            className="text-center mb-12"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary mb-6">
               <Sparkles className="w-4 h-4" />
               <span className="text-sm font-medium">Performance Checker</span>
             </div>
             <div className="gap-4 mb-6 flex-row flex items-center justify-center">
-              <img src={resolvedTheme === 'dark' ? logoDark : logoLight} alt="Logo" className="w-16 h-16 md:w-20 md:h-20" />
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it Potato</h1>
+              <img
+                src={resolvedTheme === "dark" ? logoDark : logoLight}
+                alt="Logo"
+                className="w-16 h-16 md:w-20 md:h-20"
+              />
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it </h1>
+            </div>
+            <div className="gap-4 mb-6 flex-row flex items-center justify-center">
+              <img
+                src={resolvedTheme === "dark" ? logoDark : logoLight}
+                alt="Logo"
+                className="w-16 h-16 md:w-20 md:h-20"
+              />
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Potato</h1>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Check game performance on your system. Get FPS estimates, hardware usage, 
-              and find out if your PC can handle the latest games.
+              Check game performance on your system. Get FPS estimates, hardware usage, and find out if your PC can
+              handle the latest games.
             </p>
           </motion.div>
 
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          delay: 0.2
-        }}>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.2,
+            }}
+          >
             <SearchBar onGameSelect={handleGameSelect} />
           </motion.div>
         </div>
@@ -128,40 +154,56 @@ const Index = () => {
       {/* Main Content */}
       <section className="container mx-auto px-4 pb-20">
         {/* Spec Selector */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        delay: 0.3
-      }} className="mb-12">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.3,
+          }}
+          className="mb-12"
+        >
           <SpecSelector onSpecsChange={handleSpecsChange} />
         </motion.div>
 
         {/* Selected Game Performance */}
         <AnimatePresence mode="wait">
-          {selectedGame && specs && <motion.div key={selectedGame.id} initial={{
-          opacity: 0,
-          scale: 0.95
-        }} animate={{
-          opacity: 1,
-          scale: 1
-        }} exit={{
-          opacity: 0,
-          scale: 0.95
-        }} className="mb-12 relative">
-              <button onClick={() => setSelectedGame(null)} className="absolute -top-4 -right-4 z-10 p-2 bg-card rounded-full border border-border hover:bg-muted transition-colors">
+          {selectedGame && specs && (
+            <motion.div
+              key={selectedGame.id}
+              initial={{
+                opacity: 0,
+                scale: 0.95,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.95,
+              }}
+              className="mb-12 relative"
+            >
+              <button
+                onClick={() => setSelectedGame(null)}
+                className="absolute -top-4 -right-4 z-10 p-2 bg-card rounded-full border border-border hover:bg-muted transition-colors"
+              >
                 <X className="w-5 h-5" />
               </button>
               <PerformanceDisplay game={selectedGame} specs={specs} />
-              
+
               {/* Reviews Section */}
               <div className="mt-8">
                 <GameReviewSection gameId={selectedGame.id} gameName={selectedGame.name} currentSpecs={specs} />
               </div>
-            </motion.div>}
+            </motion.div>
+          )}
         </AnimatePresence>
 
         {/* Browse Tabs */}
@@ -187,54 +229,87 @@ const Index = () => {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <h2 className="text-2xl font-bold text-foreground">Browse Games</h2>
-                  <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{filteredGames.length}</span>
+                  <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                    {filteredGames.length}
+                  </span>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                <button onClick={() => setActiveGenre(null)} className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === null ? 'bg-primary text-primary-foreground' : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
+                <button
+                  onClick={() => setActiveGenre(null)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === null ? "bg-primary text-primary-foreground" : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                >
                   All Games
                 </button>
-                {genres.map(genre => <button key={genre} onClick={() => {
-                setActiveGenre(activeGenre === genre ? null : genre);
-                setDisplayCount(GAMES_PER_PAGE);
-              }} className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === genre ? 'bg-primary text-primary-foreground' : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'}`}>
+                {genres.map((genre) => (
+                  <button
+                    key={genre}
+                    onClick={() => {
+                      setActiveGenre(activeGenre === genre ? null : genre);
+                      setDisplayCount(GAMES_PER_PAGE);
+                    }}
+                    className={`px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${activeGenre === genre ? "bg-primary text-primary-foreground" : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                  >
                     {genre}
-                  </button>)}
+                  </button>
+                ))}
               </div>
             </div>
 
             {/* Games Grid */}
-            <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+            <motion.div
+              layout
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6"
+            >
               <AnimatePresence mode="popLayout">
-                {displayedGames.map((game, index) => <motion.div key={game.id} layout initial={{
-                opacity: 0,
-                scale: 0.8
-              }} animate={{
-                opacity: 1,
-                scale: 1
-              }} exit={{
-                opacity: 0,
-                scale: 0.8
-              }} transition={{
-                delay: index * 0.02
-              }}>
-                    <GameCard game={game} onClick={() => handleGameSelect(game)} onInfoClick={() => setDetailsGame(game)} />
-                  </motion.div>)}
+                {displayedGames.map((game, index) => (
+                  <motion.div
+                    key={game.id}
+                    layout
+                    initial={{
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    transition={{
+                      delay: index * 0.02,
+                    }}
+                  >
+                    <GameCard
+                      game={game}
+                      onClick={() => handleGameSelect(game)}
+                      onInfoClick={() => setDetailsGame(game)}
+                    />
+                  </motion.div>
+                ))}
               </AnimatePresence>
             </motion.div>
 
             {/* Load More */}
-            {displayCount < filteredGames.length && <motion.div initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} className="flex justify-center mt-12">
+            {displayCount < filteredGames.length && (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                className="flex justify-center mt-12"
+              >
                 <Button onClick={loadMore} variant="outline" size="lg" className="gap-2 rounded-full px-8">
                   <ChevronDown className="w-5 h-5" />
                   Load More ({filteredGames.length - displayCount} remaining)
                 </Button>
-              </motion.div>}
+              </motion.div>
+            )}
           </TabsContent>
 
           <TabsContent value="new-releases">
@@ -261,24 +336,35 @@ const Index = () => {
       <footer className="border-t border-border/50 py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center gap-6 mb-4">
-            <Link to="/feedback" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+            <Link
+              to="/feedback"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+            >
               <MessageSquare className="w-4 h-4" />
               <span className="font-medium">Send Feedback</span>
             </Link>
-            <Link to="/donate" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+            <Link
+              to="/donate"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+            >
               <Coffee className="w-4 h-4" />
               <span className="font-medium">Support this project</span>
             </Link>
           </div>
           <p className="text-sm text-muted-foreground">
-            Performance estimates are approximations based on hardware specifications.
-            Actual performance may vary based on drivers, settings, and other factors.
+            Performance estimates are approximations based on hardware specifications. Actual performance may vary based
+            on drivers, settings, and other factors.
           </p>
         </div>
       </footer>
 
       {/* Game Details Modal */}
-      <GameDetailsModal game={detailsGame} open={!!detailsGame} onOpenChange={open => !open && setDetailsGame(null)} />
-    </div>;
+      <GameDetailsModal
+        game={detailsGame}
+        open={!!detailsGame}
+        onOpenChange={(open) => !open && setDetailsGame(null)}
+      />
+    </div>
+  );
 };
 export default Index;
