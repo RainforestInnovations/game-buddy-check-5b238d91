@@ -118,14 +118,7 @@ const Index = () => {
                 className="w-16 h-16 md:w-20 md:h-20"
               />
               <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it </h1>
-            </div>
-            <div className="gap-4 mb-6 flex-row flex items-center justify-center">
-              <img
-                src={resolvedTheme === "dark" ? logoDark : logoLight}
-                alt="Logo"
-                className="w-16 h-16 md:w-20 md:h-20"
-              />
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Potato</h1>
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Potato?</h1>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Check game performance on your system. Get FPS estimates, hardware usage, and find out if your PC can
