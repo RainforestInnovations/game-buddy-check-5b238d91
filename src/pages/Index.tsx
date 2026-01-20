@@ -12,6 +12,7 @@ import { GameDetailsModal } from '@/components/GameDetailsModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare } from 'lucide-react';
+import logoImage from '@/assets/logo.png';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const GAMES_PER_PAGE = 24;
@@ -94,8 +95,10 @@ const Index = () => {
               <Sparkles className="w-4 h-4" />
               <span className="text-sm font-medium">Performance Checker</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">Will it Potato?<span className="text-gradient">Run It?</span>
-            </h1>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <img src={logoImage} alt="Logo" className="w-16 h-16 md:w-20 md:h-20" />
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it Potato?</h1>
+            </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Check game performance on your system. Get FPS estimates, hardware usage, 
               and find out if your PC can handle the latest games.
