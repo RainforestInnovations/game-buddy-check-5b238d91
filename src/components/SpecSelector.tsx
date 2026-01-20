@@ -84,6 +84,7 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
       setSelectedCpu(appleCpu);
       setIsAppleSilicon(true);
       setCpuTab('apple');
+      setSelectedOs('macos'); // Auto-select macOS for Apple chips
       return;
     }
 
@@ -115,6 +116,14 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
       handleCpuChange(amdCpuOptions[0].name);
     } else if (newTab === 'apple') {
       handleCpuChange(appleCpuOptions[0].name);
+    }
+  };
+
+  const handleOsChange = (os: 'windows' | 'macos' | 'linux') => {
+    setSelectedOs(os);
+    // If switching to Windows/Linux while on Apple CPU, switch to Intel
+    if ((os === 'windows' || os === 'linux') && isAppleSilicon) {
+      handleCpuChange(intelCpuOptions[0].name);
     }
   };
 
@@ -415,7 +424,7 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
           </Label>
           <Select 
             value={selectedOs} 
-            onValueChange={(v) => setSelectedOs(v as typeof selectedOs)}
+            onValueChange={(v) => handleOsChange(v as typeof selectedOs)}
           >
             <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/50 transition-colors">
               <SelectValue />
