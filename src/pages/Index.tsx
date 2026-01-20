@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from 'next-themes';
 import { games, Game } from '@/data/games';
 import { GameCard } from '@/components/GameCard';
 import { SearchBar } from '@/components/SearchBar';
@@ -12,11 +13,13 @@ import { GameDetailsModal } from '@/components/GameDetailsModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare } from 'lucide-react';
-import logoImage from '@/assets/logo.png';
+import logoLight from '@/assets/logo.png';
+import logoDark from '@/assets/logo-dark.png';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 const GAMES_PER_PAGE = 24;
 const Index = () => {
+  const { resolvedTheme } = useTheme();
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [detailsGame, setDetailsGame] = useState<Game | null>(null);
   const [specs, setSpecs] = useState<SystemSpecs | null>(null);
@@ -96,7 +99,7 @@ const Index = () => {
               <span className="text-sm font-medium">Performance Checker</span>
             </div>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <img src={logoImage} alt="Logo" className="w-16 h-16 md:w-20 md:h-20" />
+              <img src={resolvedTheme === 'dark' ? logoDark : logoLight} alt="Logo" className="w-16 h-16 md:w-20 md:h-20" />
               <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it Potato?</h1>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
