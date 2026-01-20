@@ -12,7 +12,8 @@ import { SteamNewReleases } from '@/components/SteamNewReleases';
 import { GameDetailsModal } from '@/components/GameDetailsModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare } from 'lucide-react';
+import { Gamepad2, ChevronDown, X, Sparkles, Coffee, Flame, MessageSquare, ShoppingCart } from 'lucide-react';
+import { ProductRecommendations } from '@/components/ProductRecommendations';
 import logoLight from '@/assets/logo.png';
 import logoDark from '@/assets/logo-dark.png';
 import { Button } from '@/components/ui/button';
@@ -163,7 +164,7 @@ const Index = () => {
 
         {/* Browse Tabs */}
         <Tabs defaultValue="benchmarks" className="w-full">
-          <TabsList className="mb-6 w-full max-w-md mx-auto grid grid-cols-2">
+          <TabsList className="mb-6 w-full max-w-xl mx-auto grid grid-cols-3">
             <TabsTrigger value="benchmarks" className="gap-2">
               <Gamepad2 className="w-4 h-4" />
               Benchmarked Games
@@ -171,6 +172,10 @@ const Index = () => {
             <TabsTrigger value="new-releases" className="gap-2">
               <Flame className="w-4 h-4" />
               New Releases
+            </TabsTrigger>
+            <TabsTrigger value="build" className="gap-2">
+              <ShoppingCart className="w-4 h-4" />
+              Build a PC
             </TabsTrigger>
           </TabsList>
 
@@ -242,6 +247,10 @@ const Index = () => {
               </p>
             </div>
             <SteamNewReleases />
+          </TabsContent>
+
+          <TabsContent value="build">
+            <ProductRecommendations />
           </TabsContent>
         </Tabs>
       </section>
