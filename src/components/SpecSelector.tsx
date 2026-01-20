@@ -125,6 +125,10 @@ export function SpecSelector({ onSpecsChange }: SpecSelectorProps) {
     if ((os === 'windows' || os === 'linux') && isAppleSilicon) {
       handleCpuChange(intelCpuOptions[0].name);
     }
+    // If switching to macOS, switch to Apple Silicon
+    if (os === 'macos' && !isAppleSilicon) {
+      handleCpuChange(appleCpuOptions[0].name);
+    }
   };
 
   return (
