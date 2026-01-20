@@ -101,9 +101,9 @@ const Index = () => {
               <Sparkles className="w-4 h-4" />
               <span className="text-sm font-medium">Performance Checker</span>
             </div>
-            <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="gap-4 mb-6 flex-row flex items-center justify-center">
               <img src={resolvedTheme === 'dark' ? logoDark : logoLight} alt="Logo" className="w-16 h-16 md:w-20 md:h-20" />
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it </h1>
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground">Will it Potato</h1>
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Check game performance on your system. Get FPS estimates, hardware usage, 
