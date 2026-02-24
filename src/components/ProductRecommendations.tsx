@@ -55,24 +55,24 @@ interface ProductRecommendation {
 }
 
 const productDatabase: ProductRecommendation[] = [
-  // GPUs - 2026 Pricing
-  { id: 'gpu-budget-1', name: 'NVIDIA GeForce RTX 4050', category: 'gpu', priceUSD: 200, searchQuery: 'NVIDIA RTX 4050 graphics card', tier: 'budget', description: 'Great entry-level GPU for 1080p gaming', specs: '6GB GDDR6, 2560 CUDA Cores' },
-  { id: 'gpu-budget-2', name: 'AMD Radeon RX 7500 XT', category: 'gpu', priceUSD: 180, searchQuery: 'AMD Radeon RX 7500 XT graphics card', tier: 'budget', description: 'Affordable AMD option for esports titles', specs: '8GB GDDR6, 2048 Stream Processors' },
-  { id: 'gpu-mid-1', name: 'NVIDIA GeForce RTX 5060', category: 'gpu', priceUSD: 350, searchQuery: 'NVIDIA RTX 5060 graphics card', tier: 'mid', description: 'Excellent 1080p/1440p with DLSS 4', specs: '8GB GDDR7, 4608 CUDA Cores' },
-  { id: 'gpu-mid-2', name: 'AMD Radeon RX 9060 XT', category: 'gpu', priceUSD: 320, searchQuery: 'AMD Radeon RX 9060 XT graphics card', tier: 'mid', description: 'Strong 1440p gaming with FSR 4', specs: '12GB GDDR6, 3072 Stream Processors' },
-  { id: 'gpu-high-1', name: 'NVIDIA GeForce RTX 5070 Ti', category: 'gpu', priceUSD: 750, searchQuery: 'NVIDIA RTX 5070 Ti graphics card', tier: 'high', description: 'Premium 1440p/4K gaming experience', specs: '16GB GDDR7, 8960 CUDA Cores' },
-  { id: 'gpu-high-2', name: 'AMD Radeon RX 9070 XT', category: 'gpu', priceUSD: 650, searchQuery: 'AMD Radeon RX 9070 XT graphics card', tier: 'high', description: 'Exceptional 1440p AMD performance', specs: '16GB GDDR6, 4608 Stream Processors' },
-  { id: 'gpu-enthusiast-1', name: 'NVIDIA GeForce RTX 5080', category: 'gpu', priceUSD: 1200, searchQuery: 'NVIDIA RTX 5080 graphics card', tier: 'enthusiast', description: 'Top-tier 4K gaming powerhouse', specs: '16GB GDDR7, 10752 CUDA Cores' },
-  { id: 'gpu-enthusiast-2', name: 'NVIDIA GeForce RTX 5090', category: 'gpu', priceUSD: 2000, searchQuery: 'NVIDIA RTX 5090 graphics card', tier: 'enthusiast', description: 'Ultimate gaming & content creation', specs: '32GB GDDR7, 21760 CUDA Cores' },
+  // GPUs - 2025/2026 Pricing
+  { id: 'gpu-budget-1', name: 'NVIDIA GeForce RTX 4060', category: 'gpu', priceUSD: 299, searchQuery: 'NVIDIA RTX 4060 graphics card', tier: 'budget', description: 'Great entry-level GPU for 1080p gaming', specs: '8GB GDDR6, 3072 CUDA Cores' },
+  { id: 'gpu-budget-2', name: 'AMD Radeon RX 7600', category: 'gpu', priceUSD: 249, searchQuery: 'AMD Radeon RX 7600 graphics card', tier: 'budget', description: 'Affordable AMD option for 1080p gaming', specs: '8GB GDDR6, 2048 Stream Processors' },
+  { id: 'gpu-mid-1', name: 'NVIDIA GeForce RTX 5060', category: 'gpu', priceUSD: 349, searchQuery: 'NVIDIA RTX 5060 graphics card', tier: 'mid', description: 'Excellent 1080p/1440p with DLSS 4', specs: '8GB GDDR7, 3840 CUDA Cores' },
+  { id: 'gpu-mid-2', name: 'AMD Radeon RX 9060 XT', category: 'gpu', priceUSD: 319, searchQuery: 'AMD Radeon RX 9060 XT graphics card', tier: 'mid', description: 'Strong 1080p/1440p gaming with FSR 4', specs: '8GB GDDR6, 2048 Stream Processors' },
+  { id: 'gpu-high-1', name: 'NVIDIA GeForce RTX 5070 Ti', category: 'gpu', priceUSD: 749, searchQuery: 'NVIDIA RTX 5070 Ti graphics card', tier: 'high', description: 'Premium 1440p/4K gaming experience', specs: '16GB GDDR7, 8960 CUDA Cores' },
+  { id: 'gpu-high-2', name: 'AMD Radeon RX 9070 XT', category: 'gpu', priceUSD: 549, searchQuery: 'AMD Radeon RX 9070 XT graphics card', tier: 'high', description: 'Exceptional 1440p AMD performance', specs: '16GB GDDR6, 4096 Stream Processors' },
+  { id: 'gpu-enthusiast-1', name: 'NVIDIA GeForce RTX 5080', category: 'gpu', priceUSD: 999, searchQuery: 'NVIDIA RTX 5080 graphics card', tier: 'enthusiast', description: 'Top-tier 4K gaming powerhouse', specs: '16GB GDDR7, 10752 CUDA Cores' },
+  { id: 'gpu-enthusiast-2', name: 'NVIDIA GeForce RTX 5090', category: 'gpu', priceUSD: 1999, searchQuery: 'NVIDIA RTX 5090 graphics card', tier: 'enthusiast', description: 'Ultimate gaming & content creation', specs: '32GB GDDR7, 21760 CUDA Cores' },
 
-  // CPUs - 2026 Pricing
+  // CPUs - 2025/2026 Pricing
   { id: 'cpu-budget-1', name: 'Intel Core i3-14100F', category: 'cpu', priceUSD: 110, searchQuery: 'Intel Core i3-14100F processor', tier: 'budget', description: 'Great budget gaming CPU', specs: '4 Cores, 8 Threads, 4.7GHz Boost' },
   { id: 'cpu-budget-2', name: 'AMD Ryzen 5 8500G', category: 'cpu', priceUSD: 130, searchQuery: 'AMD Ryzen 5 8500G processor', tier: 'budget', description: 'Excellent value with integrated graphics', specs: '6 Cores, 12 Threads, 5.0GHz Boost' },
-  { id: 'cpu-mid-1', name: 'Intel Core i5-14600KF', category: 'cpu', priceUSD: 280, searchQuery: 'Intel Core i5-14600KF processor', tier: 'mid', description: 'Best mid-range gaming CPU', specs: '14 Cores, 20 Threads, 5.3GHz Boost' },
+  { id: 'cpu-mid-1', name: 'Intel Core i5-14600KF', category: 'cpu', priceUSD: 280, searchQuery: 'Intel Core i5-14600KF processor', tier: 'mid', description: 'Best mid-range gaming CPU', specs: '14 Cores (6P+8E), 20 Threads, 5.3GHz Boost' },
   { id: 'cpu-mid-2', name: 'AMD Ryzen 7 9700X', category: 'cpu', priceUSD: 320, searchQuery: 'AMD Ryzen 7 9700X processor', tier: 'mid', description: 'Powerful Zen 5 gaming performance', specs: '8 Cores, 16 Threads, 5.5GHz Boost' },
-  { id: 'cpu-high-1', name: 'Intel Core i7-15700K', category: 'cpu', priceUSD: 450, searchQuery: 'Intel Core i7-15700K processor', tier: 'high', description: 'High-end gaming & multitasking', specs: '20 Cores, 28 Threads, 5.8GHz Boost' },
-  { id: 'cpu-high-2', name: 'AMD Ryzen 7 9800X3D', category: 'cpu', priceUSD: 480, searchQuery: 'AMD Ryzen 7 9800X3D processor', tier: 'high', description: 'Best gaming CPU with 3D V-Cache', specs: '8 Cores, 16 Threads, 5.2GHz Boost' },
-  { id: 'cpu-enthusiast-1', name: 'Intel Core i9-15900K', category: 'cpu', priceUSD: 600, searchQuery: 'Intel Core i9-15900K processor', tier: 'enthusiast', description: 'Ultimate performance flagship', specs: '24 Cores, 32 Threads, 6.2GHz Boost' },
+  { id: 'cpu-high-1', name: 'Intel Core Ultra 7 265K', category: 'cpu', priceUSD: 394, searchQuery: 'Intel Core Ultra 7 265K processor', tier: 'high', description: 'High-end Arrow Lake gaming & multitasking', specs: '20 Cores (8P+12E), 20 Threads, 5.5GHz Boost' },
+  { id: 'cpu-high-2', name: 'AMD Ryzen 7 9800X3D', category: 'cpu', priceUSD: 479, searchQuery: 'AMD Ryzen 7 9800X3D processor', tier: 'high', description: 'Best gaming CPU with 3D V-Cache', specs: '8 Cores, 16 Threads, 5.2GHz Boost' },
+  { id: 'cpu-enthusiast-1', name: 'Intel Core Ultra 9 285K', category: 'cpu', priceUSD: 589, searchQuery: 'Intel Core Ultra 9 285K processor', tier: 'enthusiast', description: 'Arrow Lake flagship performance', specs: '24 Cores (8P+16E), 24 Threads, 5.7GHz Boost' },
   { id: 'cpu-enthusiast-2', name: 'AMD Ryzen 9 9950X', category: 'cpu', priceUSD: 650, searchQuery: 'AMD Ryzen 9 9950X processor', tier: 'enthusiast', description: 'AMD flagship for creators', specs: '16 Cores, 32 Threads, 5.7GHz Boost' },
 
   // Motherboards - 2026 Pricing
@@ -95,7 +95,7 @@ const productDatabase: ProductRecommendation[] = [
   { id: 'storage-budget-2', name: 'WD Blue SN580 500GB', category: 'storage', priceUSD: 45, searchQuery: 'WD Blue SN580 500GB NVMe SSD', tier: 'budget', description: 'Reliable budget NVMe', specs: 'NVMe M.2, 4150MB/s Read' },
   { id: 'storage-mid-1', name: 'Samsung 990 Pro 1TB', category: 'storage', priceUSD: 100, searchQuery: 'Samsung 990 Pro 1TB NVMe SSD', tier: 'mid', description: 'Premium PCIe 4.0 performance', specs: 'NVMe M.2, 7450MB/s Read' },
   { id: 'storage-mid-2', name: 'WD Black SN850X 1TB', category: 'storage', priceUSD: 95, searchQuery: 'WD Black SN850X 1TB NVMe SSD', tier: 'mid', description: 'High-performance gaming SSD', specs: 'NVMe M.2, 7300MB/s Read' },
-  { id: 'storage-high-1', name: 'Samsung 9100 Pro 2TB', category: 'storage', priceUSD: 200, searchQuery: 'Samsung 9100 Pro 2TB NVMe SSD', tier: 'high', description: 'Next-gen PCIe 5.0 speeds', specs: 'NVMe M.2, 14000MB/s Read' },
+  { id: 'storage-high-1', name: 'Samsung 9100 Pro 2TB', category: 'storage', priceUSD: 200, searchQuery: 'Samsung 9100 Pro 2TB NVMe SSD', tier: 'high', description: 'Next-gen PCIe 5.0 speeds', specs: 'NVMe M.2, 14800MB/s Read' },
 
   // PSU - 2026 Pricing
   { id: 'psu-budget-1', name: 'Corsair CX650M', category: 'psu', priceUSD: 75, searchQuery: 'Corsair CX650M power supply', tier: 'budget', description: 'Reliable 80+ Bronze PSU', specs: '650W, Semi-Modular' },
