@@ -182,42 +182,59 @@ export function ProductRecommendations() {
     return 'enthusiast';
   };
 
-  // Get product options per category based on budget
+  // Get all product options per category (sorted cheapest first for budget fitting)
   const productOptions = useMemo(() => {
     if (budgetUSD <= 0) return {} as Record<Category, ProductRecommendation[]>;
     
     const options: Record<Category, ProductRecommendation[]> = {} as Record<Category, ProductRecommendation[]>;
 
     allCategories.forEach(category => {
-      const categoryBudget = budgetUSD * budgetAllocation[category] * 1.3; // Allow 30% flexibility for choices
-      
       const categoryProducts = productDatabase
-        .filter(p => p.category === category && p.priceUSD <= categoryBudget)
-        .sort((a, b) => b.priceUSD - a.priceUSD);
+        .filter(p => p.category === category)
+        .sort((a, b) => a.priceUSD - b.priceUSD);
 
-      // If no products fit, get the cheapest options
-      if (categoryProducts.length === 0) {
-        options[category] = productDatabase
-          .filter(p => p.category === category)
-          .sort((a, b) => a.priceUSD - b.priceUSD)
-          .slice(0, 2);
-      } else {
-        options[category] = categoryProducts.slice(0, 3); // Top 3 options
-      }
+      options[category] = categoryProducts;
     });
 
     return options;
   }, [budgetUSD]);
 
-  // Initialize selected products when recommendations are shown
+  // Initialize selected products greedily within budget
   const initializeSelections = () => {
     const initial: Record<Category, string> = {} as Record<Category, string>;
+    let remaining = budgetUSD;
+
+    // First pass: pick the best item per category that fits within its allocated share
     allCategories.forEach(category => {
       const options = productOptions[category];
-      if (options && options.length > 0) {
-        initial[category] = options[0].id;
-      }
+      if (!options || options.length === 0) return;
+      const categoryBudget = budgetUSD * budgetAllocation[category];
+      // Pick the most expensive option that fits the category allocation
+      const fitting = [...options].reverse().find(p => p.priceUSD <= categoryBudget);
+      const pick = fitting || options[0]; // fallback to cheapest
+      initial[category] = pick.id;
+      remaining -= pick.priceUSD;
     });
+
+    // Second pass: upgrade categories if there's remaining budget (GPU priority first)
+    const upgradePriority: Category[] = ['gpu', 'cpu', 'monitor', 'ram', 'storage', 'motherboard', 'psu'];
+    for (const category of upgradePriority) {
+      const options = productOptions[category];
+      if (!options) continue;
+      const currentProduct = productDatabase.find(p => p.id === initial[category]);
+      if (!currentProduct) continue;
+      // Try to upgrade to a better option that still keeps total in budget
+      const betterOptions = options.filter(p => p.priceUSD > currentProduct.priceUSD).sort((a, b) => b.priceUSD - a.priceUSD);
+      for (const better of betterOptions) {
+        const extraCost = better.priceUSD - currentProduct.priceUSD;
+        if (extraCost <= remaining) {
+          initial[category] = better.id;
+          remaining -= extraCost;
+          break;
+        }
+      }
+    }
+
     setSelectedProducts(initial);
   };
 
@@ -268,10 +285,18 @@ export function ProductRecommendations() {
   };
 
   const handleProductSelect = (category: Category, productId: string) => {
-    setSelectedProducts(prev => ({
-      ...prev,
-      [category]: productId,
-    }));
+    const newProduct = productDatabase.find(p => p.id === productId);
+    const oldProduct = productDatabase.find(p => p.id === selectedProducts[category]);
+    if (!newProduct) return;
+    const oldPrice = oldProduct?.priceUSD || 0;
+    const newTotal = totalPrice - oldPrice + newProduct.priceUSD;
+    // Only allow swap if it stays within budget
+    if (newTotal <= budgetUSD) {
+      setSelectedProducts(prev => ({
+        ...prev,
+        [category]: productId,
+      }));
+    }
   };
 
   return (
