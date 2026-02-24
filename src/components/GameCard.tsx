@@ -13,7 +13,7 @@ export function GameCard({ game, onClick, onInfoClick }: GameCardProps) {
   const coverUrl = game.coverUrl 
     ? game.coverUrl
     : game.steamAppId > 0 
-      ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/library_600x900.jpg`
+      ? `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.steamAppId}/header.jpg`
       : 'https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png';
 
   const handleInfoClick = (e: React.MouseEvent) => {
@@ -28,13 +28,13 @@ export function GameCard({ game, onClick, onInfoClick }: GameCardProps) {
       className="relative group cursor-pointer rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-300"
       onClick={onClick}
     >
-      <div className="aspect-[2/3] relative overflow-hidden">
+      <div className="aspect-[460/215] relative overflow-hidden">
         <img
           src={coverUrl}
           alt={game.name}
           className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/library_600x900.jpg';
+            (e.target as HTMLImageElement).src = 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
           }}
         />
         <div className="absolute inset-0 bg-background/30 group-hover:bg-background/40 transition-colors" />

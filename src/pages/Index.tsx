@@ -208,7 +208,7 @@ const Index = () => {
             </div>
 
             {/* Games Grid */}
-            <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               <AnimatePresence mode="popLayout">
                 {displayedGames.map((game, index) => <motion.div key={game.id} layout initial={{
                 opacity: 0,

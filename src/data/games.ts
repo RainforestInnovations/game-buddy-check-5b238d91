@@ -238,13 +238,13 @@ export const games: Game[] = [
   { id: "avowed", name: "Avowed", steamAppId: 2054910, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "stalker2", name: "S.T.A.L.K.E.R. 2: Heart of Chornobyl", steamAppId: 1643320, releaseYear: 2024, genre: ["FPS", "Survival"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-7700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "metroexodus", name: "Metro Exodus", steamAppId: 412020, releaseYear: 2019, genre: ["FPS", "Survival"], supportedOS: ["windows", "linux"], minRequirements: { gpu: "GTX 670", cpu: "Intel Core i5-4440", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 2070", cpu: "Intel Core i7-4770K", ram: 16, vram: 8 } },
-  { id: "farcry6", name: "Far Cry 6", steamAppId: 0, releaseYear: 2021, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "AMD Ryzen 3 1200", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "AMD Ryzen 5 5600X", ram: 16, vram: 8 } },
+  { id: "farcry6", name: "Far Cry 6", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co3wk0.png", releaseYear: 2021, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "AMD Ryzen 3 1200", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "AMD Ryzen 5 5600X", ram: 16, vram: 8 } },
   { id: "assassinscreedmirage", name: "Assassin's Creed Mirage", steamAppId: 2551630, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070 Ti", cpu: "Intel Core i7-11700K", ram: 16, vram: 8 } },
   { id: "assassinscreedshadows", name: "Assassin's Creed Shadows", steamAppId: 3035510, releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "dyinglight2", name: "Dying Light 2 Stay Human", steamAppId: 534380, releaseYear: 2022, genre: ["Action", "Survival"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i3-9100", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-9700K", ram: 16, vram: 10 } },
   { id: "biomutant", name: "Biomutant", steamAppId: 597820, releaseYear: 2021, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4690K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
   { id: "outerworlds", name: "The Outer Worlds", steamAppId: 578650, releaseYear: 2019, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 650 Ti", cpu: "Intel Core i3-3225", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-7700K", ram: 8, vram: 6 } },
-  { id: "watchdogslegion", name: "Watch Dogs: Legion", steamAppId: 0, releaseYear: 2020, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4460", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i9-9900K", ram: 16, vram: 10 } },
+  { id: "watchdogslegion", name: "Watch Dogs: Legion", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2ed3.png", releaseYear: 2020, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4460", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i9-9900K", ram: 16, vram: 10 } },
   { id: "pathofexile", name: "Path of Exile", steamAppId: 238960, releaseYear: 2013, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 650 Ti", cpu: "Intel Core i3-7100", ram: 8, vram: 1 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-7700", ram: 16, vram: 4 } },
   { id: "pathofexile2", name: "Path of Exile 2", steamAppId: 2694490, releaseYear: 2024, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1650", cpu: "Intel Core i5-8400", ram: 16, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060 Ti", cpu: "Intel Core i7-9700K", ram: 32, vram: 8 } },
   { id: "grimdawn", name: "Grim Dawn", steamAppId: 219990, releaseYear: 2016, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 460", cpu: "AMD Athlon 64 X2", ram: 2, vram: 1 }, recommendedRequirements: { gpu: "GTX 760", cpu: "Intel Core i5-3470", ram: 6, vram: 2 } },
@@ -303,7 +303,7 @@ export const games: Game[] = [
   { id: "chiralityg", name: "Chained Echoes", steamAppId: 1229240, releaseYear: 2022, genre: ["RPG", "Turn-Based"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-4690K", ram: 8, vram: 2 } },
   { id: "octopathtraveler2", name: "Octopath Traveler II", steamAppId: 1971650, releaseYear: 2023, genre: ["RPG", "Turn-Based"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 750", cpu: "Intel Core i5-6400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-9400", ram: 16, vram: 4 } },
   { id: "trianglestrategy", name: "Triangle Strategy", steamAppId: 1850510, releaseYear: 2022, genre: ["Strategy", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 750 Ti", cpu: "Intel Core i5-3330", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-6700", ram: 16, vram: 4 } },
-  { id: "fireemblem3hopes", name: "Fire Emblem Warriors: Three Hopes", steamAppId: 0, releaseYear: 2022, genre: ["Action", "Strategy"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
+  { id: "fireemblem3hopes", name: "Fire Emblem Warriors: Three Hopes", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4zyh.png", releaseYear: 2022, genre: ["Action", "Strategy"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
   { id: "nioh2", name: "Nioh 2", steamAppId: 1325200, releaseYear: 2021, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-4460", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
   { id: "codeveinn", name: "Code Vein", steamAppId: 678960, releaseYear: 2019, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-2300", ram: 6, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-7400", ram: 8, vram: 4 } },
   { id: "scarletnnexus", name: "Scarlet Nexus", steamAppId: 775500, releaseYear: 2021, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 760", cpu: "Intel Core i5-3470", ram: 6, vram: 2 }, recommendedRequirements: { gpu: "GTX 970", cpu: "Intel Core i7-6600", ram: 8, vram: 4 } },
@@ -311,7 +311,7 @@ export const games: Game[] = [
   { id: "nierreplicant", name: "NieR Replicant ver.1.22474487139...", steamAppId: 1113560, releaseYear: 2021, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-6400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1660", cpu: "Intel Core i7-8700", ram: 16, vram: 6 } },
   { id: "nierautomata", name: "NieR: Automata", steamAppId: 524220, releaseYear: 2017, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 770", cpu: "Intel Core i3-2100", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 980", cpu: "Intel Core i5-4670", ram: 8, vram: 4 } },
   { id: "devilmaycry5", name: "Devil May Cry 5", steamAppId: 601150, releaseYear: 2019, genre: ["Action", "Hack and Slash"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 760", cpu: "Intel Core i5-4460", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-4770", ram: 16, vram: 4 } },
-  { id: "bayonetta3", name: "Bayonetta 3", steamAppId: 0, releaseYear: 2022, genre: ["Action", "Hack and Slash"], supportedOS: [], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
+  { id: "bayonetta3", name: "Bayonetta 3", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4kb9.png", releaseYear: 2022, genre: ["Action", "Hack and Slash"], supportedOS: [], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
   { id: "doom2016", name: "DOOM (2016)", steamAppId: 379720, releaseYear: 2016, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 670", cpu: "Intel Core i5-2400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 970", cpu: "Intel Core i7-3770", ram: 8, vram: 4 } },
   { id: "doomeeternal", name: "DOOM Eternal", steamAppId: 782330, releaseYear: 2020, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i9-9900K", ram: 16, vram: 10 } },
   { id: "wolfensteinneworder", name: "Wolfenstein: The New Order", steamAppId: 201810, releaseYear: 2014, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 460", cpu: "Intel Core i5-2400", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 770", cpu: "Intel Core i7-4770", ram: 8, vram: 4 } },
@@ -335,26 +335,26 @@ export const games: Game[] = [
   { id: "hellletloose", name: "Hell Let Loose", steamAppId: 686810, releaseYear: 2021, genre: ["FPS", "Tactical"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-6600K", ram: 12, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-9700K", ram: 16, vram: 6 } },
   { id: "postscriptum", name: "Post Scriptum", steamAppId: 736220, releaseYear: 2018, genre: ["FPS", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 770", cpu: "Intel Core i5-4430", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-6700K", ram: 16, vram: 8 } },
   { id: "thenextworld", name: "The Finals", steamAppId: 2073850, releaseYear: 2023, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600", ram: 12, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i5-9600K", ram: 16, vram: 8 } },
-  { id: "xdefiant", name: "XDefiant", steamAppId: 0, releaseYear: 2024, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "wutheringwaves", name: "Wuthering Waves", steamAppId: 0, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "genshinimpact", name: "Genshin Impact", steamAppId: 0, releaseYear: 2020, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1030", cpu: "Intel Core i5-6600K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 6 } },
-  { id: "honkaistarrail", name: "Honkai: Star Rail", steamAppId: 0, releaseYear: 2023, genre: ["RPG", "Turn-Based"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
+  { id: "xdefiant", name: "XDefiant", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6p4g.png", releaseYear: 2024, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
+  { id: "wutheringwaves", name: "Wuthering Waves", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7m50.png", releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
+  { id: "genshinimpact", name: "Genshin Impact", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co480t.png", releaseYear: 2020, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1030", cpu: "Intel Core i5-6600K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 6 } },
+  { id: "honkaistarrail", name: "Honkai: Star Rail", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5w3k.png", releaseYear: 2023, genre: ["RPG", "Turn-Based"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
   { id: "zenlesszonezero", name: "Zenless Zone Zero", steamAppId: 2329820, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "bluuearchive", name: "Blue Archive", steamAppId: 0, releaseYear: 2021, genre: ["RPG", "Strategy"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2300", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6500", ram: 8, vram: 4 } },
-  { id: "arknights", name: "Arknights", steamAppId: 0, releaseYear: 2019, genre: ["Strategy", "Tower Defense"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2300", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6500", ram: 8, vram: 4 } },
+  { id: "bluuearchive", name: "Blue Archive", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4yvo.png", releaseYear: 2021, genre: ["RPG", "Strategy"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2300", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6500", ram: 8, vram: 4 } },
+  { id: "arknights", name: "Arknights", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co31r1.png", releaseYear: 2019, genre: ["Strategy", "Tower Defense"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2300", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6500", ram: 8, vram: 4 } },
   { id: "lostark", name: "Lost Ark", steamAppId: 1599340, releaseYear: 2022, genre: ["MMO", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 460", cpu: "Intel Core i3-6300", ram: 8, vram: 1 }, recommendedRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-7600K", ram: 16, vram: 4 } },
   { id: "newworld", name: "New World", steamAppId: 1063730, releaseYear: 2021, genre: ["MMO", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 670", cpu: "Intel Core i5-2400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 2070", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
   { id: "guildwars2", name: "Guild Wars 2", steamAppId: 1284210, releaseYear: 2012, genre: ["MMO", "RPG"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 460", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 970", cpu: "Intel Core i7-4770K", ram: 8, vram: 4 } },
   { id: "elderscrollsonline", name: "The Elder Scrolls Online", steamAppId: 306130, releaseYear: 2014, genre: ["MMO", "RPG"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 460", cpu: "Intel Core i3-540", ram: 3, vram: 1 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-3570K", ram: 8, vram: 4 } },
   { id: "blackdesert", name: "Black Desert Online", steamAppId: 582660, releaseYear: 2017, genre: ["MMO", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-650", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-6700", ram: 16, vram: 8 } },
-  { id: "wowclassic", name: "World of Warcraft", steamAppId: 0, releaseYear: 2004, genre: ["MMO", "RPG"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core i5-3450", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 1080", cpu: "Intel Core i7-6700K", ram: 8, vram: 8 } },
+  { id: "wowclassic", name: "World of Warcraft", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2l7z.png", releaseYear: 2004, genre: ["MMO", "RPG"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core i5-3450", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 1080", cpu: "Intel Core i7-6700K", ram: 8, vram: 8 } },
   { id: "throneandliberty", name: "Throne and Liberty", steamAppId: 2429640, releaseYear: 2024, genre: ["MMO", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 32, vram: 8 } },
   { id: "toweroffantasy", name: "Tower of Fantasy", steamAppId: 2064650, releaseYear: 2022, genre: ["MMO", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-7400", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-9700K", ram: 16, vram: 6 } },
   { id: "warframe", name: "Warframe", steamAppId: 230410, releaseYear: 2013, genre: ["Action", "Shooter"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 580", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 } },
   { id: "kerbalspace2", name: "Kerbal Space Program 2", steamAppId: 954850, releaseYear: 2023, genre: ["Simulation", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-9400F", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-10700K", ram: 32, vram: 10 } },
   { id: "kerbalspace", name: "Kerbal Space Program", steamAppId: 220200, releaseYear: 2015, genre: ["Simulation", "Space"], supportedOS: ["windows", "macos", "linux"], minRequirements: { gpu: "Intel HD 4000", cpu: "Intel Core 2 Duo", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-4590", ram: 8, vram: 2 } },
   { id: "elitedangerous", name: "Elite Dangerous", steamAppId: 359320, releaseYear: 2015, genre: ["Simulation", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 470", cpu: "Intel Core i7-3770K", ram: 6, vram: 1 }, recommendedRequirements: { gpu: "GTX 770", cpu: "Intel Core i7-4770K", ram: 8, vram: 2 } },
-  { id: "starciitizen", name: "Star Citizen", steamAppId: 0, releaseYear: 2014, genre: ["Simulation", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-6700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i9-10900K", ram: 32, vram: 10 } },
+  { id: "starciitizen", name: "Star Citizen", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1wyy.png", releaseYear: 2014, genre: ["Simulation", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-6700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i9-10900K", ram: 32, vram: 10 } },
   { id: "everspace2", name: "Everspace 2", steamAppId: 1128920, releaseYear: 2023, genre: ["Action", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 780", cpu: "Intel Core i5-4590", ram: 8, vram: 3 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-4770K", ram: 16, vram: 4 } },
   { id: "xrebirth", name: "X4: Foundations", steamAppId: 392160, releaseYear: 2018, genre: ["Simulation", "Space"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 780", cpu: "Intel Core i5-4590", ram: 8, vram: 3 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-6700K", ram: 16, vram: 8 } },
   { id: "flightsim2020", name: "Microsoft Flight Simulator", steamAppId: 1250410, releaseYear: 2020, genre: ["Simulation", "Flight"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 770", cpu: "AMD Ryzen 3 1200", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 4090", cpu: "Intel Core i9-13900K", ram: 32, vram: 16 } },
@@ -389,7 +389,7 @@ export const games: Game[] = [
   { id: "multiversus", name: "MultiVersus", steamAppId: 1818750, releaseYear: 2024, genre: ["Fighting", "Platform"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-2400", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 } },
   { id: "brawlhalla", name: "Brawlhalla", steamAppId: 291550, releaseYear: 2017, genre: ["Fighting", "Platform"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 2, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2400", ram: 4, vram: 2 } },
   { id: "dragonquest11", name: "Dragon Quest XI S", steamAppId: 1295510, releaseYear: 2020, genre: ["RPG", "JRPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 750 Ti", cpu: "Intel Core i5-4570", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-6700", ram: 16, vram: 4 } },
-  { id: "xenobladechron3", name: "Xenoblade Chronicles 3", steamAppId: 0, releaseYear: 2022, genre: ["RPG", "JRPG"], supportedOS: [], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
+  { id: "xenobladechron3", name: "Xenoblade Chronicles 3", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4p09.png", releaseYear: 2022, genre: ["RPG", "JRPG"], supportedOS: [], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-3570K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i7-8700", ram: 16, vram: 4 } },
   { id: "likeadragon8", name: "Like a Dragon: Infinite Wealth", steamAppId: 2072450, releaseYear: 2024, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-3470", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-8700", ram: 16, vram: 8 } },
   { id: "yakuza0", name: "Yakuza 0", steamAppId: 638970, releaseYear: 2018, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core i5-3470", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 970", cpu: "Intel Core i7-6700", ram: 8, vram: 4 } },
   { id: "yakuzakiwami", name: "Yakuza Kiwami", steamAppId: 834530, releaseYear: 2019, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core i5-3470", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 970", cpu: "Intel Core i7-6700", ram: 8, vram: 4 } },
@@ -437,7 +437,7 @@ export const games: Game[] = [
   { id: "bonelab", name: "BONELAB", steamAppId: 1592190, releaseYear: 2022, genre: ["VR", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-7500", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-9700K", ram: 32, vram: 8 } },
   { id: "bladeandsorcery", name: "Blade & Sorcery", steamAppId: 629730, releaseYear: 2020, genre: ["VR", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-6600K", ram: 8, vram: 8 }, recommendedRequirements: { gpu: "RTX 2080", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
   { id: "vorpx", name: "VRChat", steamAppId: 438100, releaseYear: 2017, genre: ["VR", "Social"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-4590", ram: 4, vram: 4 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-8700K", ram: 8, vram: 8 } },
-  { id: "asgardswrath2", name: "Asgard's Wrath 2", steamAppId: 0, releaseYear: 2023, genre: ["VR", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-10700K", ram: 32, vram: 10 } },
+  { id: "asgardswrath2", name: "Asgard's Wrath 2", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6hrx.png", releaseYear: 2023, genre: ["VR", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-10700K", ram: 32, vram: 10 } },
   { id: "pistolwhip", name: "Pistol Whip", steamAppId: 1079800, releaseYear: 2019, genre: ["VR", "Rhythm"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-4590", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 } },
   { id: "superliminal", name: "Superliminal", steamAppId: 1049410, releaseYear: 2019, genre: ["Puzzle", "Adventure"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2300", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-4690K", ram: 8, vram: 4 } },
   { id: "thewitnessss", name: "The Witness", steamAppId: 210970, releaseYear: 2016, genre: ["Puzzle", "Adventure"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 560", cpu: "Intel Core i3-2100", ram: 4, vram: 1 }, recommendedRequirements: { gpu: "GTX 780", cpu: "Intel Core i7-4790K", ram: 8, vram: 3 } },
@@ -510,22 +510,22 @@ export const games: Game[] = [
   { id: "snipercontraccts", name: "Sniper Ghost Warrior Contracts 2", steamAppId: 1338770, releaseYear: 2021, genre: ["FPS", "Stealth"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 770", cpu: "Intel Core i5-4460", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1070", cpu: "Intel Core i7-7700K", ram: 16, vram: 8 } },
   { id: "marvelrivals", name: "Marvel Rivals", steamAppId: 2767030, releaseYear: 2024, genre: ["FPS", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "deltaforcehawk", name: "Delta Force", steamAppId: 2519590, releaseYear: 2024, genre: ["FPS", "Tactical"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "gtavi", name: "Grand Theft Auto VI", steamAppId: 0, releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
+  { id: "gtavi", name: "Grand Theft Auto VI", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7479.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
   // 2024-2025 New Releases and Popular Games
   { id: "scheduledinr", name: "Schedule I", steamAppId: 3164500, releaseYear: 2025, genre: ["Simulation", "Strategy"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
-  { id: "oblivionremaster", name: "The Elder Scrolls IV: Oblivion Remastered", steamAppId: 0, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "deathstrandingofd", name: "Death Stranding 2: On The Beach", steamAppId: 0, releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
-  { id: "thewitcher4", name: "The Witcher 4: Polaris", steamAppId: 0, releaseYear: 2026, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-13900K", ram: 32, vram: 16 } },
-  { id: "bioshock4", name: "BioShock 4", steamAppId: 0, releaseYear: 2026, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-10400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "crimsondesert", name: "Crimson Desert", steamAppId: 0, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1080", cpu: "Intel Core i5-8600K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "marvels-wolverine", name: "Marvel's Wolverine", steamAppId: 0, releaseYear: 2026, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "masseffect5", name: "Mass Effect 5", steamAppId: 0, releaseYear: 2026, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
+  { id: "oblivionremaster", name: "The Elder Scrolls IV: Oblivion Remastered", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8dik.png", releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "deathstrandingofd", name: "Death Stranding 2: On The Beach", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7kqr.png", releaseYear: 2025, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
+  { id: "thewitcher4", name: "The Witcher 4: Polaris", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8b13.png", releaseYear: 2026, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-13900K", ram: 32, vram: 16 } },
+  { id: "bioshock4", name: "BioShock 4", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5hq7.png", releaseYear: 2026, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-10400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "crimsondesert", name: "Crimson Desert", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5gnp.png", releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1080", cpu: "Intel Core i5-8600K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "marvels-wolverine", name: "Marvel's Wolverine", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5gnn.png", releaseYear: 2026, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "masseffect5", name: "Mass Effect 5", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5gnk.png", releaseYear: 2026, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "RTX 2060", cpu: "Intel Core i5-9600K", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 4080", cpu: "Intel Core i9-12900K", ram: 32, vram: 16 } },
   { id: "dragonage4", name: "Dragon Age: The Veilguard", steamAppId: 1845910, releaseYear: 2024, genre: ["RPG", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i9-10900K", ram: 16, vram: 12 } },
   { id: "metaphor", name: "Metaphor: ReFantazio", steamAppId: 2679460, releaseYear: 2024, genre: ["RPG", "JRPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1080", cpu: "Intel Core i7-4790", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-8700", ram: 16, vram: 8 } },
   { id: "wildsr", name: "Monster Hunter Wilds", steamAppId: 2246340, releaseYear: 2025, genre: ["Action", "RPG"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1660 Super", cpu: "Intel Core i5-10600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-11700K", ram: 32, vram: 12 } },
-  { id: "splintercell2024", name: "Splinter Cell Remake", steamAppId: 0, releaseYear: 2025, genre: ["Action", "Stealth"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
+  { id: "splintercell2024", name: "Splinter Cell Remake", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co4zyj.png", releaseYear: 2025, genre: ["Action", "Stealth"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "lego_horizon", name: "LEGO Horizon Adventures", steamAppId: 2612910, releaseYear: 2024, genre: ["Adventure", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6400", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700", ram: 16, vram: 6 } },
-  { id: "arma4", name: "Arma 4", steamAppId: 0, releaseYear: 2025, genre: ["FPS", "Simulation"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1660", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "arma4", name: "Arma 4", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7n3c.png", releaseYear: 2025, genre: ["FPS", "Simulation"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1660", cpu: "Intel Core i5-9600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "dune_awakening", name: "Dune: Awakening", steamAppId: 1172710, releaseYear: 2025, genre: ["Survival", "MMO"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3080", cpu: "Intel Core i7-10700K", ram: 32, vram: 10 } },
   { id: "testdrive", name: "Test Drive Unlimited: Solar Crown", steamAppId: 1249970, releaseYear: 2024, genre: ["Racing", "Open World"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700", ram: 16, vram: 8 } },
   { id: "bodycam", name: "Bodycam", steamAppId: 2406770, releaseYear: 2024, genre: ["FPS", "Tactical"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
@@ -534,10 +534,10 @@ export const games: Game[] = [
   { id: "fragpunks", name: "FragPunk", steamAppId: 2324100, releaseYear: 2025, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 960", cpu: "Intel Core i5-4460", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 } },
   { id: "skullandbones", name: "Skull and Bones", steamAppId: 2237490, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "atomfall", name: "Atomfall", steamAppId: 2245420, releaseYear: 2025, genre: ["Action", "Survival"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "clockworkrev", name: "Clockwork Revolution", steamAppId: 0, releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
-  { id: "onimusha", name: "Onimusha: Way of the Sword", steamAppId: 0, releaseYear: 2026, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
+  { id: "clockworkrev", name: "Clockwork Revolution", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6ird.png", releaseYear: 2025, genre: ["RPG", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "onimusha", name: "Onimusha: Way of the Sword", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8a0x.png", releaseYear: 2026, genre: ["Action", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "thebeehive", name: "The First Berserker: Khazan", steamAppId: 2422970, releaseYear: 2025, genre: ["Action", "RPG"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
-  { id: "borderlands4", name: "Borderlands 4", steamAppId: 0, releaseYear: 2025, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
+  { id: "borderlands4", name: "Borderlands 4", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7s2s.png", releaseYear: 2025, genre: ["FPS", "Action"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-12700K", ram: 32, vram: 12 } },
   { id: "teso2", name: "Clair Obscur: Expedition 33", steamAppId: 2008890, releaseYear: 2025, genre: ["RPG", "Turn-Based"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "sandland", name: "Sand Land", steamAppId: 1979440, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-7600", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
   { id: "nomoreheroes3", name: "No More Heroes III", steamAppId: 2008790, releaseYear: 2022, genre: ["Action", "Hack and Slash"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-4570", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
@@ -558,12 +558,12 @@ export const games: Game[] = [
   { id: "manorlordsss", name: "Manor Lords", steamAppId: 1363080, releaseYear: 2024, genre: ["Strategy", "City Builder"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050", cpu: "Intel Core i5-4570", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "tenpercent", name: "Tenpercent Swordman VR", steamAppId: 2040920, releaseYear: 2023, genre: ["VR", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-7500", ram: 16, vram: 8 }, recommendedRequirements: { gpu: "RTX 2080", cpu: "Intel Core i7-9700K", ram: 32, vram: 8 } },
   { id: "f1manager24", name: "F1 Manager 2024", steamAppId: 2287730, releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-4590", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-9700K", ram: 16, vram: 6 } },
-  { id: "maddennnfl25", name: "Madden NFL 25", steamAppId: 0, releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
-  { id: "nhl25", name: "NHL 25", steamAppId: 0, releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
+  { id: "maddennnfl25", name: "Madden NFL 25", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7jvb.png", releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
+  { id: "nhl25", name: "NHL 25", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7opn.png", releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "fc25", name: "EA Sports FC 25", steamAppId: 2669320, releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-12700K", ram: 16, vram: 8 } },
   { id: "nba2k25", name: "NBA 2K25", steamAppId: 2663370, releaseYear: 2024, genre: ["Sports", "Simulation"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 960", cpu: "Intel Core i3-2100", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2070", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
-  { id: "wwe2k25", name: "WWE 2K25", steamAppId: 0, releaseYear: 2025, genre: ["Sports", "Fighting"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
-  { id: "pokemonlegendszas", name: "Pokémon Legends: Z-A", steamAppId: 0, releaseYear: 2025, genre: ["RPG", "Adventure"], supportedOS: [], hasBenchmark: false, minRequirements: { gpu: "GTX 750 Ti", cpu: "Intel Core i5-2500K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 16, vram: 4 } },
+  { id: "wwe2k25", name: "WWE 2K25", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co8bxs.png", releaseYear: 2025, genre: ["Sports", "Fighting"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
+  { id: "pokemonlegendszas", name: "Pokémon Legends: Z-A", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co7kqq.png", releaseYear: 2025, genre: ["RPG", "Adventure"], supportedOS: [], hasBenchmark: false, minRequirements: { gpu: "GTX 750 Ti", cpu: "Intel Core i5-2500K", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 16, vram: 4 } },
   { id: "sonicxshadow", name: "Sonic x Shadow Generations", steamAppId: 2513280, releaseYear: 2024, genre: ["Platformer", "Action"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1050 Ti", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
   { id: "silenthill2r", name: "Silent Hill 2", steamAppId: 2124490, releaseYear: 2024, genre: ["Horror", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1080", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 4070", cpu: "Intel Core i7-10700K", ram: 16, vram: 12 } },
   { id: "1000xresist", name: "1000xRESIST", steamAppId: 1675830, releaseYear: 2024, genre: ["Adventure", "Narrative"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 950", cpu: "Intel Core i5-2400", ram: 8, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 16, vram: 4 } },
@@ -571,8 +571,8 @@ export const games: Game[] = [
   { id: "neva", name: "Neva", steamAppId: 1443220, releaseYear: 2024, genre: ["Action", "Adventure"], supportedOS: ["windows", "macos"], minRequirements: { gpu: "GTX 660", cpu: "Intel Core i5-4460", ram: 4, vram: 2 }, recommendedRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 4 } },
   { id: "erikakr", name: "Erika", steamAppId: 2312180, releaseYear: 2024, genre: ["Horror", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-6600K", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3060", cpu: "Intel Core i7-9700K", ram: 16, vram: 8 } },
   { id: "still_wakes", name: "Still Wakes the Deep", steamAppId: 1622910, releaseYear: 2024, genre: ["Horror", "Adventure"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1070", cpu: "Intel Core i5-8400", ram: 16, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
-  { id: "hauntedchoc", name: "The Haunted Chocolatier", steamAppId: 0, releaseYear: 2025, genre: ["Simulation", "RPG"], supportedOS: ["windows", "macos", "linux"], hasBenchmark: false, minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 2, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2500", ram: 4, vram: 2 } },
-  { id: "littlenigh3", name: "Little Nightmares III", steamAppId: 0, releaseYear: 2025, genre: ["Horror", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
+  { id: "hauntedchoc", name: "The Haunted Chocolatier", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co41dh.png", releaseYear: 2025, genre: ["Simulation", "RPG"], supportedOS: ["windows", "macos", "linux"], hasBenchmark: false, minRequirements: { gpu: "Intel HD 3000", cpu: "Intel Core 2 Duo", ram: 2, vram: 1 }, recommendedRequirements: { gpu: "GTX 650", cpu: "Intel Core i5-2500", ram: 4, vram: 2 } },
+  { id: "littlenigh3", name: "Little Nightmares III", steamAppId: 0, coverUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co6ire.png", releaseYear: 2025, genre: ["Horror", "Adventure"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 970", cpu: "Intel Core i5-6600K", ram: 8, vram: 4 }, recommendedRequirements: { gpu: "RTX 2060", cpu: "Intel Core i7-8700K", ram: 16, vram: 6 } },
   { id: "eldenringnightreign", name: "Elden Ring: Nightreign", steamAppId: 3050770, releaseYear: 2025, genre: ["Action", "RPG"], supportedOS: ["windows"], hasBenchmark: false, minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 12, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 } },
   { id: "eldenringdlc", name: "Elden Ring: Shadow of the Erdtree", steamAppId: 2778580, releaseYear: 2024, genre: ["Action", "RPG"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 12, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-8700K", ram: 16, vram: 8 } },
   { id: "finalshape", name: "Destiny 2: The Final Shape", steamAppId: 1085660, releaseYear: 2024, genre: ["FPS", "MMO"], supportedOS: ["windows"], minRequirements: { gpu: "GTX 1060", cpu: "Intel Core i5-8400", ram: 8, vram: 6 }, recommendedRequirements: { gpu: "RTX 3070", cpu: "Intel Core i7-10700K", ram: 16, vram: 8 } },
@@ -593,6 +593,267 @@ export interface PerformanceResult {
   ramUsage: number;
   quality: 'Low' | 'Medium' | 'High' | 'Ultra' | 'Unplayable';
   benchmarkVideoId: string;
+}
+
+// Per-game benchmark data sourced from TechSpot, TechPowerUp, and other benchmark reviews
+// Format: { [gpuTierRange]: { '1080p': fps, '1440p': fps, '4k': fps } }
+export interface GameBenchmarkEntry {
+  gpuTierMin: number;
+  gpuTierMax: number;
+  fps1080p: number;
+  fps1440p: number;
+  fps4k: number;
+}
+
+// Real benchmark data for popular games (Ultra/High settings, no RT, no DLSS)
+export const gameBenchmarks: Record<string, GameBenchmarkEntry[]> = {
+  cyberpunk2077: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 144, fps1440p: 104, fps4k: 62 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 128, fps1440p: 90, fps4k: 52 },
+    { gpuTierMin: 8.5, gpuTierMax: 8.99, fps1080p: 110, fps1440p: 77, fps4k: 44 },
+    { gpuTierMin: 8, gpuTierMax: 8.49, fps1080p: 95, fps1440p: 67, fps4k: 38 },
+    { gpuTierMin: 7.5, gpuTierMax: 7.99, fps1080p: 82, fps1440p: 58, fps4k: 32 },
+    { gpuTierMin: 7, gpuTierMax: 7.49, fps1080p: 72, fps1440p: 50, fps4k: 27 },
+    { gpuTierMin: 6.5, gpuTierMax: 6.99, fps1080p: 62, fps1440p: 43, fps4k: 22 },
+    { gpuTierMin: 6, gpuTierMax: 6.49, fps1080p: 54, fps1440p: 37, fps4k: 18 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 44, fps1440p: 28, fps4k: 14 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 35, fps1440p: 22, fps4k: 10 },
+    { gpuTierMin: 3, gpuTierMax: 3.99, fps1080p: 25, fps1440p: 15, fps4k: 7 },
+    { gpuTierMin: 0, gpuTierMax: 2.99, fps1080p: 15, fps1440p: 9, fps4k: 4 },
+  ],
+  eldenring: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 165, fps1440p: 130, fps4k: 75 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 148, fps1440p: 112, fps4k: 65 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 125, fps1440p: 92, fps4k: 52 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 100, fps1440p: 72, fps4k: 40 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 80, fps1440p: 55, fps4k: 30 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 60, fps1440p: 42, fps4k: 22 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 45, fps1440p: 30, fps4k: 15 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 30, fps1440p: 18, fps4k: 8 },
+  ],
+  hogwartslegacy: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 136, fps1440p: 111, fps4k: 65 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 118, fps1440p: 92, fps4k: 54 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 98, fps1440p: 75, fps4k: 42 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 78, fps1440p: 58, fps4k: 32 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 60, fps1440p: 43, fps4k: 23 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 45, fps1440p: 30, fps4k: 16 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 34, fps1440p: 22, fps4k: 11 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 22, fps1440p: 14, fps4k: 6 },
+  ],
+  baldursgate3: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 160, fps1440p: 125, fps4k: 72 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 140, fps1440p: 108, fps4k: 62 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 118, fps1440p: 88, fps4k: 50 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 95, fps1440p: 68, fps4k: 38 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 75, fps1440p: 52, fps4k: 28 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 55, fps1440p: 38, fps4k: 20 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 40, fps1440p: 26, fps4k: 13 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 28, fps1440p: 16, fps4k: 7 },
+  ],
+  rdr2: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 150, fps1440p: 115, fps4k: 68 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 130, fps1440p: 98, fps4k: 58 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 108, fps1440p: 80, fps4k: 45 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 88, fps1440p: 62, fps4k: 35 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 68, fps1440p: 48, fps4k: 25 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 52, fps1440p: 35, fps4k: 18 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 38, fps1440p: 24, fps4k: 12 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 24, fps1440p: 15, fps4k: 6 },
+  ],
+  csgo2: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 400, fps1440p: 320, fps4k: 180 },
+    { gpuTierMin: 8, gpuTierMax: 9.49, fps1080p: 350, fps1440p: 270, fps4k: 150 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 280, fps1440p: 210, fps4k: 115 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 220, fps1440p: 160, fps4k: 85 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 170, fps1440p: 120, fps4k: 60 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 130, fps1440p: 85, fps4k: 42 },
+    { gpuTierMin: 3, gpuTierMax: 3.99, fps1080p: 90, fps1440p: 55, fps4k: 28 },
+    { gpuTierMin: 0, gpuTierMax: 2.99, fps1080p: 55, fps1440p: 32, fps4k: 15 },
+  ],
+  valorant: [
+    { gpuTierMin: 9, gpuTierMax: 10, fps1080p: 500, fps1440p: 400, fps4k: 220 },
+    { gpuTierMin: 7, gpuTierMax: 8.99, fps1080p: 400, fps1440p: 300, fps4k: 160 },
+    { gpuTierMin: 5, gpuTierMax: 6.99, fps1080p: 280, fps1440p: 200, fps4k: 100 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 200, fps1440p: 140, fps4k: 65 },
+    { gpuTierMin: 3, gpuTierMax: 3.99, fps1080p: 140, fps1440p: 90, fps4k: 40 },
+    { gpuTierMin: 0, gpuTierMax: 2.99, fps1080p: 80, fps1440p: 50, fps4k: 22 },
+  ],
+  starfield: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 110, fps1440p: 85, fps4k: 50 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 95, fps1440p: 72, fps4k: 42 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 78, fps1440p: 58, fps4k: 33 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 62, fps1440p: 45, fps4k: 25 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 48, fps1440p: 34, fps4k: 18 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 35, fps1440p: 24, fps4k: 12 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 22, fps1440p: 14, fps4k: 7 },
+  ],
+  blackmythwukong: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 120, fps1440p: 90, fps4k: 52 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 105, fps1440p: 78, fps4k: 44 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 85, fps1440p: 62, fps4k: 35 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 68, fps1440p: 48, fps4k: 26 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 52, fps1440p: 36, fps4k: 19 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 38, fps1440p: 25, fps4k: 13 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 24, fps1440p: 15, fps4k: 7 },
+  ],
+  alanwake2: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 100, fps1440p: 75, fps4k: 42 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 85, fps1440p: 62, fps4k: 35 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 68, fps1440p: 50, fps4k: 28 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 55, fps1440p: 38, fps4k: 20 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 42, fps1440p: 28, fps4k: 14 },
+    { gpuTierMin: 0, gpuTierMax: 5.99, fps1080p: 28, fps1440p: 18, fps4k: 8 },
+  ],
+  gtav: [
+    { gpuTierMin: 9, gpuTierMax: 10, fps1080p: 185, fps1440p: 150, fps4k: 95 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 165, fps1440p: 130, fps4k: 80 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 140, fps1440p: 108, fps4k: 62 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 115, fps1440p: 85, fps4k: 48 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 90, fps1440p: 65, fps4k: 35 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 70, fps1440p: 48, fps4k: 25 },
+    { gpuTierMin: 3, gpuTierMax: 3.99, fps1080p: 50, fps1440p: 32, fps4k: 16 },
+    { gpuTierMin: 0, gpuTierMax: 2.99, fps1080p: 30, fps1440p: 18, fps4k: 8 },
+  ],
+  thewitcher3: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 155, fps1440p: 120, fps4k: 70 },
+    { gpuTierMin: 8, gpuTierMax: 9.49, fps1080p: 130, fps1440p: 98, fps4k: 55 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 105, fps1440p: 75, fps4k: 42 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 82, fps1440p: 58, fps4k: 32 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 62, fps1440p: 42, fps4k: 22 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 45, fps1440p: 30, fps4k: 15 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 30, fps1440p: 18, fps4k: 8 },
+  ],
+  apex: [
+    { gpuTierMin: 9, gpuTierMax: 10, fps1080p: 280, fps1440p: 210, fps4k: 120 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 240, fps1440p: 175, fps4k: 95 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 195, fps1440p: 140, fps4k: 75 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 155, fps1440p: 108, fps4k: 55 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 115, fps1440p: 78, fps4k: 38 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 85, fps1440p: 55, fps4k: 26 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 55, fps1440p: 32, fps4k: 14 },
+  ],
+  fortnite: [
+    { gpuTierMin: 9, gpuTierMax: 10, fps1080p: 240, fps1440p: 180, fps4k: 100 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 200, fps1440p: 150, fps4k: 82 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 160, fps1440p: 118, fps4k: 62 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 125, fps1440p: 88, fps4k: 45 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 95, fps1440p: 65, fps4k: 32 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 70, fps1440p: 45, fps4k: 22 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 45, fps1440p: 28, fps4k: 12 },
+  ],
+  helldivers2: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 140, fps1440p: 110, fps4k: 65 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 120, fps1440p: 92, fps4k: 54 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 100, fps1440p: 75, fps4k: 42 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 82, fps1440p: 58, fps4k: 32 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 62, fps1440p: 44, fps4k: 23 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 45, fps1440p: 30, fps4k: 16 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 32, fps1440p: 20, fps4k: 10 },
+  ],
+  godofwarragnarok: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 130, fps1440p: 100, fps4k: 58 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 112, fps1440p: 85, fps4k: 48 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 92, fps1440p: 68, fps4k: 38 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 75, fps1440p: 54, fps4k: 28 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 58, fps1440p: 40, fps4k: 20 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 42, fps1440p: 28, fps4k: 14 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 28, fps1440p: 17, fps4k: 8 },
+  ],
+  stalker2: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 105, fps1440p: 80, fps4k: 45 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 88, fps1440p: 65, fps4k: 37 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 72, fps1440p: 52, fps4k: 28 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 56, fps1440p: 40, fps4k: 21 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 42, fps1440p: 28, fps4k: 14 },
+    { gpuTierMin: 0, gpuTierMax: 5.99, fps1080p: 28, fps1440p: 18, fps4k: 8 },
+  ],
+  minecraft: [
+    { gpuTierMin: 8, gpuTierMax: 10, fps1080p: 400, fps1440p: 350, fps4k: 250 },
+    { gpuTierMin: 6, gpuTierMax: 7.99, fps1080p: 300, fps1440p: 250, fps4k: 160 },
+    { gpuTierMin: 4, gpuTierMax: 5.99, fps1080p: 200, fps1440p: 150, fps4k: 90 },
+    { gpuTierMin: 3, gpuTierMax: 3.99, fps1080p: 120, fps1440p: 80, fps4k: 45 },
+    { gpuTierMin: 0, gpuTierMax: 2.99, fps1080p: 60, fps1440p: 40, fps4k: 20 },
+  ],
+  doomeeternal: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 350, fps1440p: 280, fps4k: 165 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 300, fps1440p: 235, fps4k: 138 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 250, fps1440p: 195, fps4k: 110 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 200, fps1440p: 150, fps4k: 82 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 155, fps1440p: 110, fps4k: 58 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 115, fps1440p: 78, fps4k: 40 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 80, fps1440p: 52, fps4k: 26 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 50, fps1440p: 30, fps4k: 14 },
+  ],
+  callofdutywarzone: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 200, fps1440p: 155, fps4k: 90 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 175, fps1440p: 130, fps4k: 75 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 145, fps1440p: 108, fps4k: 60 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 118, fps1440p: 85, fps4k: 45 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 92, fps1440p: 65, fps4k: 34 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 68, fps1440p: 45, fps4k: 22 },
+    { gpuTierMin: 4, gpuTierMax: 4.99, fps1080p: 48, fps1440p: 30, fps4k: 15 },
+    { gpuTierMin: 0, gpuTierMax: 3.99, fps1080p: 30, fps1440p: 18, fps4k: 8 },
+  ],
+  ghostoftsushima: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 155, fps1440p: 120, fps4k: 70 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 135, fps1440p: 102, fps4k: 58 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 112, fps1440p: 82, fps4k: 46 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 88, fps1440p: 64, fps4k: 35 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 68, fps1440p: 48, fps4k: 25 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 50, fps1440p: 34, fps4k: 17 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 34, fps1440p: 22, fps4k: 10 },
+  ],
+  thelastofus: [
+    { gpuTierMin: 9.5, gpuTierMax: 10, fps1080p: 125, fps1440p: 95, fps4k: 55 },
+    { gpuTierMin: 9, gpuTierMax: 9.49, fps1080p: 108, fps1440p: 80, fps4k: 45 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 88, fps1440p: 65, fps4k: 36 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 70, fps1440p: 50, fps4k: 27 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 52, fps1440p: 36, fps4k: 18 },
+    { gpuTierMin: 0, gpuTierMax: 5.99, fps1080p: 35, fps1440p: 22, fps4k: 10 },
+  ],
+  palworld: [
+    { gpuTierMin: 9, gpuTierMax: 10, fps1080p: 140, fps1440p: 108, fps4k: 62 },
+    { gpuTierMin: 8, gpuTierMax: 8.99, fps1080p: 115, fps1440p: 85, fps4k: 48 },
+    { gpuTierMin: 7, gpuTierMax: 7.99, fps1080p: 92, fps1440p: 66, fps4k: 36 },
+    { gpuTierMin: 6, gpuTierMax: 6.99, fps1080p: 70, fps1440p: 48, fps4k: 25 },
+    { gpuTierMin: 5, gpuTierMax: 5.99, fps1080p: 50, fps1440p: 34, fps4k: 17 },
+    { gpuTierMin: 0, gpuTierMax: 4.99, fps1080p: 32, fps1440p: 20, fps4k: 9 },
+  ],
+};
+
+// Helper to get game-specific benchmark FPS
+function getGameBenchmarkFps(gameId: string, gpuTier: number, resolution: '1080p' | '1440p' | '4k'): number | null {
+  const benchmarks = gameBenchmarks[gameId];
+  if (!benchmarks) return null;
+  
+  const entry = benchmarks.find(b => gpuTier >= b.gpuTierMin && gpuTier <= b.gpuTierMax);
+  if (!entry) return null;
+  
+  switch (resolution) {
+    case '1080p': return entry.fps1080p;
+    case '1440p': return entry.fps1440p;
+    case '4k': return entry.fps4k;
+  }
+}
+
+// Game optimization factor - how well-optimized a game is (affects formula accuracy)
+function getGameOptimizationFactor(game: Game): number {
+  // Well-optimized engines/games get a bonus, poorly-optimized get a penalty
+  const year = game.releaseYear;
+  const recVram = game.recommendedRequirements.vram;
+  const recRam = game.recommendedRequirements.ram;
+  
+  // Older games are generally easier to run
+  if (year <= 2015) return 1.5;
+  if (year <= 2018) return 1.3;
+  if (year <= 2020) return 1.15;
+  if (year <= 2022) return 1.05;
+  if (year <= 2023) return 1.0;
+  // 2024+ games tend to be more demanding
+  if (recVram >= 12 && recRam >= 32) return 0.8; // Very demanding
+  if (recVram >= 8) return 0.9;
+  return 0.95;
 }
 
 export const resolutionOptions = [
@@ -849,57 +1110,69 @@ export function calculatePerformance(
   resolution: '1080p' | '1440p' | '4k' = '1080p',
   qualityPreset: QualityPreset = 'high'
 ): PerformanceResult {
-  // Get resolution multiplier
-  const resMultiplier = resolutionOptions.find(r => r.value === resolution)?.multiplier ?? 1;
-  
-  // Get quality multiplier
   const qualityMultiplier = qualityOptions.find(q => q.value === qualityPreset)?.multiplier ?? 1;
   
-  // Base performance calculation
-  const minGpuTier = 3; // Approximate tier for min requirements
-  const recGpuTier = 7; // Approximate tier for recommended requirements
+  // Try game-specific benchmark data first
+  const benchmarkFps = getGameBenchmarkFps(game.id, gpuTier, resolution);
   
-  // Calculate performance score (0-100)
-  let performanceScore = 0;
+  let avgFps: number;
   
-  // GPU contribution (50%)
-  const gpuScore = Math.min(100, (gpuTier / 10) * 100);
-  performanceScore += gpuScore * 0.5;
+  if (benchmarkFps !== null) {
+    // Use real benchmark data, adjusted for quality preset
+    // Benchmark data is based on High/Ultra, so adjust accordingly
+    avgFps = Math.round(benchmarkFps * qualityMultiplier);
+  } else {
+    // Improved formula for games without specific benchmarks
+    const optimizationFactor = getGameOptimizationFactor(game);
+    const resMultiplier = resolutionOptions.find(r => r.value === resolution)?.multiplier ?? 1;
+    
+    // GPU is primary driver (55%), CPU secondary (25%), RAM (12%), VRAM (8%)
+    const gpuScore = Math.min(100, (gpuTier / 10) * 100);
+    const cpuScore = Math.min(100, (cpuTier / 10) * 100);
+    const ramScore = Math.min(100, (ram / game.recommendedRequirements.ram) * 100);
+    const vramScore = Math.min(100, (vram / game.recommendedRequirements.vram) * 100);
+    
+    const performanceScore = gpuScore * 0.55 + cpuScore * 0.25 + ramScore * 0.12 + vramScore * 0.08;
+    
+    // Non-linear FPS curve - diminishing returns at high performance
+    const normalizedScore = performanceScore / 100;
+    const baseFps = 20;
+    const maxFps = 200;
+    const rawFps = baseFps + Math.pow(normalizedScore, 0.85) * (maxFps - baseFps);
+    
+    avgFps = Math.round(rawFps * resMultiplier * qualityMultiplier * optimizationFactor);
+  }
   
-  // CPU contribution (30%)
-  const cpuScore = Math.min(100, (cpuTier / 10) * 100);
-  performanceScore += cpuScore * 0.3;
+  // CPU bottleneck check - if CPU is much weaker than GPU, cap FPS
+  if (cpuTier < gpuTier * 0.6) {
+    const cpuCap = Math.round(avgFps * (0.6 + (cpuTier / gpuTier) * 0.4));
+    avgFps = Math.min(avgFps, cpuCap);
+  }
   
-  // RAM contribution (15%)
-  const ramScore = Math.min(100, (ram / game.recommendedRequirements.ram) * 100);
-  performanceScore += ramScore * 0.15;
+  // RAM bottleneck
+  if (ram < game.minRequirements.ram) {
+    avgFps = Math.round(avgFps * 0.5);
+  } else if (ram < game.recommendedRequirements.ram) {
+    avgFps = Math.round(avgFps * 0.85);
+  }
   
-  // VRAM contribution (5%)
-  const vramScore = Math.min(100, (vram / game.recommendedRequirements.vram) * 100);
-  performanceScore += vramScore * 0.05;
+  // VRAM bottleneck
+  if (vram < game.minRequirements.vram) {
+    avgFps = Math.round(avgFps * 0.4);
+  }
   
-  // Calculate FPS based on game requirements and performance score, adjusted for resolution and quality
-  const baseFps = 30;
-  const maxFps = 240;
-  const rawAvgFps = baseFps + (performanceScore / 100) * (maxFps - baseFps);
-  const avgFps = Math.round(rawAvgFps * resMultiplier * qualityMultiplier);
+  const lowFps = Math.round(avgFps * 0.65);
+  const highFps = Math.round(avgFps * 1.25);
   
-  // Low FPS (1% lows)
-  const lowFps = Math.round(avgFps * 0.6);
-  
-  // High FPS
-  const highFps = Math.round(avgFps * 1.3);
-  
-  // GPU Usage (higher usage at higher settings)
-  const gpuUsage = Math.min(99, Math.round(70 + (performanceScore / 100) * 25));
+  // GPU Usage - higher at higher res/quality
+  const gpuUsage = Math.min(99, Math.round(60 + (gpuTier < 8 ? 30 : 15) + (resolution === '4k' ? 10 : resolution === '1440p' ? 5 : 0)));
   
   // CPU Usage
-  const cpuUsage = Math.min(85, Math.round(40 + (cpuTier / 10) * 35));
+  const cpuUsage = Math.min(90, Math.round(30 + (cpuTier / 10) * 40 + (avgFps > 120 ? 15 : 0)));
   
   // RAM Usage
   const ramUsage = Math.min(ram * 1024, Math.round(game.recommendedRequirements.ram * 0.8 * 1024));
   
-  // Determine quality setting
   let quality: PerformanceResult['quality'];
   if (avgFps < 25) quality = 'Unplayable';
   else if (avgFps < 45) quality = 'Low';
@@ -907,17 +1180,7 @@ export function calculatePerformance(
   else if (avgFps < 120) quality = 'High';
   else quality = 'Ultra';
   
-  // Generate a pseudo benchmark video ID (in real app, would be actual video)
   const benchmarkVideoId = `benchmark_${game.id}_${Math.round(gpuTier)}`;
   
-  return {
-    avgFps,
-    lowFps,
-    highFps,
-    gpuUsage,
-    cpuUsage,
-    ramUsage,
-    quality,
-    benchmarkVideoId
-  };
+  return { avgFps, lowFps, highFps, gpuUsage, cpuUsage, ramUsage, quality, benchmarkVideoId };
 }
